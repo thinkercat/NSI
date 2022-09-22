@@ -7,8 +7,8 @@ pg.init()
 
 # Génération de la fenetre
 pg.display.set_caption("Dégradé linéaire")             # Définir le titre de la fenetre 
-height = 100
-widht = 256
+height = 400
+widht = 600
 screen = pg.display.set_mode((widht,height))   #Dimensions de la fenetre
 screen.fill([000,000,000])
 
@@ -17,8 +17,11 @@ screen.fill([000,000,000])
 color = 0
 for x in range(widht):
     
-    pg.draw.line(screen, (color,color,color), [x, 0], [x,100])
-    color += 1
+    pg.draw.line(screen, (color,color,color), [x, 0], [x,height])
+    if color < 255:
+        color += 1
+    else:
+        color = 255
     
 pg.display.flip()
 
