@@ -40,8 +40,8 @@ def cake():
 
 run = True 
 while run: #Tant que run = true le jeu marche
-    # screen.fill([221, 190, 169])
-    screen.blit(strawberrycake,(520,360))
+    screen.fill([221, 190, 169])
+    
     MousePosition = pg.mouse.get_pos()
     screen.blit(dish,MousePosition)
     
