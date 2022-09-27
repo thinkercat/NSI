@@ -21,7 +21,7 @@ for tours in range(9):
     randomPointB = [random.randint(0,300),random.randint(0,300)]
     randomcolor = [random.randint(0,255),random.randint(0,255),random.randint(0,255)]
     
-    line = pg.draw.line(screen, (randomcolor[0],randomcolor[1],randomcolor[2]),[randomPointA[0],randomPointB[1]],[randomPointB[0],randomPointB[1]],5)
+    line = pg.draw.line(screen, (randomcolor[0],randomcolor[1],randomcolor[2]),randomPointA,randomPointB,5)
     
     
     print("\nLIGNE",tours,"\nPoint A =",randomPointA,"\nPoint B =",randomPointB,"\nCouleur =",randomcolor[0],randomcolor[1],randomcolor[2])
