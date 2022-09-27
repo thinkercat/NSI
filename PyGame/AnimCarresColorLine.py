@@ -35,6 +35,7 @@ while run: #Tant que run = true le jeu marche
         pg.time.delay(250)    
     
     
+    
     for event in pg.event.get():   # dans la liste des evenements .get
         if event.type == pg.QUIT:   # si l'evenement pg.QUIT est activé
             run = False             # on arrete le jeu
