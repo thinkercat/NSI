@@ -7,8 +7,8 @@ pg.init()
 
 # Génération de la fenetre
 pg.display.set_caption("Dégradé linéaire")             # Définir le titre de la fenetre 
-height = 400
-widht = 600
+height = 255
+widht = 255
 screen = pg.display.set_mode((widht,height))   #Dimensions de la fenetre
 screen.fill([000,000,000])
 

@@ -13,11 +13,23 @@ screen = pg.display.set_mode((widht,height))   #Dimensions de la fenetre
 screen.fill([000,000,000])
 pg.display.flip()
 
-for i in range(30//20):
-    print(i)
+PointA = [0,0]
+PointB = [0,300]
+for i in range(16):   
+    pg.draw.line(screen,(0,99,99),PointA,PointB,5)
+    PointA[0] += 20
+    PointB[0] += 20
 
 
+PointA = [0,0]
+PointB = [300,0]
+for i in range(16):   
+    pg.draw.line(screen,(0,99,99),PointA,PointB,5)
+    PointA[1] += 20
+    PointB[1] += 20
 
+
+pg.display.flip()
 
 
 
