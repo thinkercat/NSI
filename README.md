@@ -1,5 +1,5 @@
 # NSI
 
-Fichier utilisé en NSI
+Fichiers utilisé en NSI
 
 ## Python
