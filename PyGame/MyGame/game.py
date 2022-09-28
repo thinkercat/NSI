@@ -16,8 +16,8 @@ screen = pg.display.set_mode((width,height))   #Dimensions de la fenetre
 screenBackground = (255,255,255)
 
 
-# pg.mixer.music.load('NSI\PyGame\MyGame\Assets\Musiques\chill.mp3')
-# pg.mixer.music.play(loops = -1)
+pg.mixer.music.load('NSI\PyGame\MyGame\Assets\Musiques\chill.mp3')
+pg.mixer.music.play(loops = -1)
 
 
 
