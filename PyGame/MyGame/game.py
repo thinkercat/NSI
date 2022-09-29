@@ -40,12 +40,13 @@ batteryRect = battery.get_rect()
 batteryRect.x = 300
 batteryRect.y = 300
 
+
 ## Energy(health) variables
 maxEnergy = 150
-playerEnergy = 0
+playerEnergy = 10
 batteryEnergy = 10
 energyBar = [width-180,20,150,30]
-
+energyBarColor = [255,0,0]
 
 
 run = True 
@@ -60,10 +61,27 @@ while run: #Tant que run = true le jeu marche
         playerEnergy += batteryEnergy
         playerVelocity += 2
 
-# Verify if player win and state the energy bar 
+
+# Verify player energy and state the energy bar 
     if playerEnergy < maxEnergy:
+
+        if playerEnergy < maxEnergy//3:
+            energyBarColor = [255,0,0]
+        elif playerEnergy > maxEnergy//3 & playerEnergy < (maxEnergy//3)*2:
+            energyBarColor = [255,255,0]
+        elif playerEnergy > (maxEnergy//3)*2 & playerEnergy < (maxEnergy//3)*3:
+            energyBarColor = [0,255,0]
+
+
+
+
+
         energyBar[2] = playerEnergy
-        pg.draw.rect(screen, (0,255,100),energyBar)
+        pg.draw.rect(screen, (energyBarColor),energyBar)
+    elif playerEnergy <= 0:
+        print("Game Over")
+        run = False
+        pg.quit
     else:
         print("Game Win")
         run = False
