@@ -16,7 +16,7 @@ pg.display.flip()
 PointA = [0,0]
 PointB = [0,300]
 for i in range(16):   
-    pg.draw.line(screen,(0,99,99),PointA,PointB,5)
+    pg.draw.line(screen,(0,99,99),PointA,PointB,3)
     PointA[0] += 20
     PointB[0] += 20
 
@@ -24,7 +24,7 @@ for i in range(16):
 PointA = [0,0]
 PointB = [300,0]
 for i in range(16):   
-    pg.draw.line(screen,(0,99,99),PointA,PointB,5)
+    pg.draw.line(screen,(0,99,99),PointA,PointB,3)
     PointA[1] += 20
     PointB[1] += 20
 

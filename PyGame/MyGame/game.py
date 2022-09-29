@@ -6,30 +6,41 @@ import random
 pg.init()
 
 # Génération de la fenetre
-icon = pg.image.load('NSI\PyGame\MyGame\Assets\gameboy_icon.png')
+icon = pg.image.load('PyGame/MyGame/Assets/gameboy_icon.png')
 
 pg.display.set_icon(icon)
 pg.display.set_caption("Game")             # Définir le titre de la fenetre 
-height = 720
-width = 1080
+height = 1000
+width = 900
 screen = pg.display.set_mode((width,height))   #Dimensions de la fenetre
-screenBackground = (255,255,255)
+screenBackground = (200,160,160)
 
 
-pg.mixer.music.load('NSI\PyGame\MyGame\Assets\Musiques\chill.mp3')
-pg.mixer.music.play(loops = -1)
+#pg.mixer.music.load('NSI\PyGame\MyGame\Assets\Musiques\chill.mp3')
+#pg.mixer.music.play(loops = -1)
 
+#Dimensions jouables
+playScreenHeight = 900
+playScreenWidht = 900
 
-
-player = pg.image.load('NSI\PyGame\MyGame\Assets\gameboy_icon.png')
+## Player variables
+player = pg.image.load('PyGame/MyGame/Assets/gameboy_icon.png')
 playerRect = player.get_rect()
 playerWidth = player.get_width()
 playerHeight = player.get_height()
 playerVelocity = 10
+#Player pos on start
+playerRect.x = playScreenWidht/2    
+playerRect.y = playScreenHeight/2
 
-battery = pg.image.load('NSI\PyGame\MyGame\Assets\energy-lila.png')
+## Battery variables
+battery = pg.image.load('PyGame/MyGame/Assets/energy-lila.png')
 batteryRect = battery.get_rect()
+#Battery pos on start
+batteryRect.x = 300
+batteryRect.y = 300
 
+## Energy(health) variables
 maxEnergy = 150
 playerEnergy = 0
 batteryEnergy = 10
@@ -40,21 +51,24 @@ energyBar = [width-180,20,150,30]
 run = True 
 while run: #Tant que run = true le jeu marche
     screen.fill(screenBackground)
-    pg.draw.rect(screen, (0,0,0),(width-180,20,150,30), 5)
 
 
 # Energy Spawn
     if batteryRect.colliderect(playerRect):
-        batteryRect.x = random.randint(10,200)
-        batteryRect.y = random.randint(10,200)
+        batteryRect.x = random.randint(0,playScreenWidht)
+        batteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
         playerEnergy += batteryEnergy
+        playerVelocity += 2
 
-    if playerEnergy < 150:
+# Verify if player win and state the energy bar 
+    if playerEnergy < maxEnergy:
         energyBar[2] = playerEnergy
-        pg.draw.rect(screen, (255,0,0),energyBar)
+        pg.draw.rect(screen, (0,255,100),energyBar)
     else:
         print("Game Win")
-
+        run = False
+        pg.quit
+    pg.draw.rect(screen, (0,0,0),(width-180,20,150,30), 5)
 
 # Player Movement
     userKeyInput = pg.key.get_pressed()
@@ -62,10 +76,10 @@ while run: #Tant que run = true le jeu marche
         if playerRect.x > 0:
             playerRect.x -= playerVelocity
     if userKeyInput[pg.K_RIGHT]:
-        if playerRect.x < width - playerWidth:
+        if playerRect.x < playScreenWidht - playerWidth:
             playerRect.x += playerVelocity
     if userKeyInput[pg.K_UP]:
-        if playerRect.y > 0:
+        if playerRect.y > height-playScreenHeight:
             playerRect.y -= playerVelocity
     if userKeyInput[pg.K_DOWN]:
         if playerRect.y < height - playerHeight:
