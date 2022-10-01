@@ -41,25 +41,17 @@ batteryRect.x = 300
 batteryRect.y = 300
 
 ## BadBattery variable
-badBattery = pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png')
-badBatteryRect = badBattery.get_rect()
-#
-badBattery2 = pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png')
-badBatteryRect2 = badBattery2.get_rect()
-#
-badBattery3 = pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png')
-badBatteryRect3 = badBattery3.get_rect()
-#Badbattery pos on start
-badBatteryRect.x = random.randint(0,playScreenWidht)
-badBatteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
-#
-badBatteryRect2.x = random.randint(0,playScreenWidht)
-badBatteryRect2.y = random.randint(height-playScreenHeight, playScreenHeight)
-#
-badBatteryRect3.x = random.randint(0,playScreenWidht)
-badBatteryRect3.y = random.randint(height-playScreenHeight, playScreenHeight)
-
-
+badBattery = []
+badBatteryRect = [] 
+badBatterySpawn = 3
+def badBatteryGeneration(nombreDeBadBattery:int):      
+    for nbOfBadBattery in range(nombreDeBadBattery):
+        badBattery.append(pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png'))
+        badBatteryRect.append(badBattery[nbOfBadBattery].get_rect()) 
+def badBatteryRandomSpawn():
+    for nbOfBadBattery in range(len(badBatteryRect)):
+        badBatteryRect[nbOfBadBattery].x = random.randint(0, playScreenWidht)
+        badBatteryRect[nbOfBadBattery].y = random.randint(height-playScreenHeight, playScreenHeight)
 
 ## Energy(health) variables
 maxEnergy = 150
@@ -74,18 +66,6 @@ energyBarColor = [255,0,0]
 
 
 
-def badEnergyRandomSpawn():
-    badBatteryRect.x = random.randint(0,playScreenWidht)
-    badBatteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
-    badBatteryRect2.x = random.randint(0,playScreenWidht)
-    badBatteryRect2.y = random.randint(height-playScreenHeight, playScreenHeight)
-    badBatteryRect3.x = random.randint(0,playScreenWidht)
-    badBatteryRect3.y = random.randint(height-playScreenHeight, playScreenHeight)
-
-
-
-
-
 run = True 
 while run: #Tant que run = true le jeu marche
     screen.fill(screenBackground)
@@ -95,15 +75,18 @@ while run: #Tant que run = true le jeu marche
     if batteryRect.colliderect(playerRect):
         batteryRect.x = random.randint(0,playScreenWidht)
         batteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
-        badEnergyRandomSpawn()
+        badBatteryGeneration(badBatterySpawn)
+        badBatteryRandomSpawn()
         playerEnergy += batteryEnergy
         playerVelocity += 2
+        badBatterySpawn +=3
+
+
 
 # BadEnergy Spawn
-    if badBatteryRect.colliderect(playerRect) or badBatteryRect2.colliderect(playerRect) or badBatteryRect3.colliderect(playerRect):
-        badEnergyRandomSpawn()
-        playerEnergy -= badBatteryEnergy
-        playerVelocity -= 2
+
+
+
 
 
 # Verify player energy and state the energy bar 
@@ -154,9 +137,8 @@ while run: #Tant que run = true le jeu marche
     
     pg.time.delay(30)               # "fps"
     screen.blit(battery,batteryRect)
-    screen.blit(badBattery,badBatteryRect)
-    screen.blit(badBattery2,badBatteryRect2)
-    screen.blit(badBattery3,badBatteryRect3)
+    for nbOfBadBattery in range(len(badBatteryRect)):
+        screen.blit(badBattery[nbOfBadBattery],badBatteryRect[nbOfBadBattery])
     screen.blit(player,playerRect)
     
     pg.display.flip()
