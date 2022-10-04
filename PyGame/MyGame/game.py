@@ -6,7 +6,7 @@ import random
 pg.init()
 
 # Génération de la fenetre
-icon = pg.image.load('PyGame/MyGame/Assets/gameboy.png')
+icon = pg.image.load('NSI/PyGame/MyGame/Assets/gameboy.png')
 
 pg.display.set_icon(icon)
 pg.display.set_caption("Game")             # Définir le titre de la fenetre 
@@ -16,14 +16,14 @@ screen = pg.display.set_mode((width,height))   #Dimensions de la fenetre
 screenBackground = (200,160,160)
 
 
-#pg.mixer.music.load('MyGame\Assets\Musiques\chill.mp3')
-#pg.mixer.music.play(loops = -1)
+pg.mixer.music.load('NSI/PyGame/MyGame\Assets\Musiques\chill.mp3')
+pg.mixer.music.play(loops = -1)
 
 #Dimensions jouables
 playScreenHeight = 900
 playScreenWidht = 900
 ## Player variables
-player = pg.image.load('PyGame/MyGame/Assets/gameboy.png')
+player = pg.image.load('NSI/PyGame/MyGame/Assets/gameboy.png')
 playerRect = player.get_rect()
 playerWidth = player.get_width()
 playerHeight = player.get_height()
@@ -33,7 +33,7 @@ playerRect.x = playScreenWidht/2
 playerRect.y = playScreenHeight/2
 
 ## Battery variables
-battery = pg.image.load('PyGame/MyGame/Assets/pile-verte.png')
+battery = pg.image.load('NSI/PyGame/MyGame/Assets/pile-verte.png')
 batteryRect = battery.get_rect()
 #Battery pos on start
 batteryRect.x = 300
@@ -45,7 +45,7 @@ badBatteryRect = []
 badBatterySpawn = 2
 def badBatteryGeneration(nombreDeBadBattery:int):      
     for nbOfBadBattery in range(nombreDeBadBattery):
-        badBattery.append(pg.image.load('PyGame/MyGame/Assets/pile-rouge.png'))
+        badBattery.append(pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png'))
         badBatteryRect.append(badBattery[nbOfBadBattery].get_rect()) 
 def badBatteryRandomSpawn():
     for nbOfBadBattery in range(len(badBatteryRect)):
@@ -58,7 +58,7 @@ def badBatteryRandomSpawn():
 maxEnergy = 150
 playerEnergy = 10
 batteryEnergy = 10
-badBatteryEnergy = 5
+badBatteryEnergy = 10
 energyBar = [width-180,20,150,30]
 energyBarColor = [255,0,0]
 
@@ -66,28 +66,55 @@ energyBarColor = [255,0,0]
 
 
 
-
+GamePlay = False
 run = True 
 while run: #Tant que run = true le jeu marche
+    playerEnergy = 10
     screen.fill(screenBackground)
-    playableScreen = pg.draw.rect(screen,(0,0,0),(0,100,playScreenWidht,playScreenHeight),10)
+    playButton = pg.draw.circle(screen,(200,0,0),(width/2,height/2),200)
+    MousePress = pg.mouse.get_pressed()
+    MousePos = pg.mouse.get_pos()
 
-# When player collide
-    if playerRect.colliderect(batteryRect):
-        batteryRect.x = random.randint(0,playScreenWidht)
-        batteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
-        badBatteryGeneration(badBatterySpawn)
-        badBatteryRandomSpawn()
-        playerEnergy += batteryEnergy
-        playerVelocity += 5
+    if MousePress[0] & playButton.collidepoint(MousePos):
+        GamePlay = True
 
 
+    while GamePlay :
+
+        for event in pg.event.get(): 
+            if event.type == pg.QUIT:
+                GamePlay = False  
+                run = False            
+                pg.quit
 
 
 
 
-# Verify player energy and state the energy bar 
-    if playerEnergy < maxEnergy:
+
+
+        screen.fill(screenBackground)
+    # When player collide
+        if playerRect.colliderect(batteryRect): 
+            batteryRect.x = random.randint(0,playScreenWidht)
+            batteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
+            badBatteryGeneration(badBatterySpawn)
+            badBatteryRandomSpawn()
+            playerEnergy += batteryEnergy
+            playerVelocity += 5
+
+        for nbOfBadBattery in range(len(badBatteryRect)):   
+            if playerRect.colliderect(badBatteryRect[nbOfBadBattery]):
+                badBatteryRandomSpawn()
+                playerEnergy -= badBatteryEnergy
+                playerVelocity -= 5
+
+
+
+
+
+
+
+    # Verify player energy and state the energy bar 
 
         if playerEnergy < maxEnergy//3:
             energyBarColor = [255,0,0]
@@ -98,45 +125,58 @@ while run: #Tant que run = true le jeu marche
 
         energyBar[2] = playerEnergy
         pg.draw.rect(screen, (energyBarColor),energyBar)
-    if playerEnergy <= 0:
-        print("Game Over")
-        run = False
-        pg.quit
-    if playerEnergy >= maxEnergy:
-        print("Game Win")
-        run = False
-        pg.quit
-    pg.draw.rect(screen, (0,0,0),(width-180,20,150,30), 5)
+        if playerEnergy <= 0:   
+            print("Game Over")
+            GamePlay = False
+        if playerEnergy >= maxEnergy:   
+            print("Game Win")
+            GamePlay = False
+        
 
-# Player Movement
-#    userKeyInput = pg.key.get_pressed()
-#    if userKeyInput[pg.K_LEFT]:
-#        if not playerRect.y.colliderect(playableScreenRect):
-#            playerRect.x -= playerVelocity
-#    if userKeyInput[pg.K_RIGHT]:
-#        if playerRect.x - playerVelocity < playScreenWidht - playerWidth:
-#            playerRect.x += playerVelocity
-#    if userKeyInput[pg.K_UP]:
-#       if playerRect.y + playerVelocity > height-playScreenHeight:
-#            playerRect.y -= playerVelocity
-#    if userKeyInput[pg.K_DOWN]:
-#        if playerRect.y - playerVelocity < height - playerHeight:
-#            playerRect.y += playerVelocity    
 
-    MousePos = pg.mouse.get_pos()
-    playerRect = MousePos
+
+
+    # Player Movement
+        userKeyInput = pg.key.get_pressed()
+
+        if userKeyInput[pg.K_LEFT]: 
+            playerRect.x -= playerVelocity
+   
+        if userKeyInput[pg.K_RIGHT]:    
+            playerRect.x += playerVelocity
+   
+        if userKeyInput[pg.K_UP]:   
+            playerRect.y -= playerVelocity
+   
+        if userKeyInput[pg.K_DOWN]:
+            playerRect.y += playerVelocity    
+
+        if playerRect.x < 0:
+            playerRect.x = 0
+        if playerRect.x >= 900 - playerWidth:
+            playerRect.x = 900 - playerWidth
+    
+        if playerRect.y < 100:
+            playerRect.y = 100
+        if playerRect.y >= 1000 - playerHeight:
+            playerRect.y = 1000 - playerHeight
+
+
+        pg.time.delay(60)               # "fps"
+        screen.blit(battery,batteryRect)
+        for nbOfBadBattery in range(len(badBatteryRect)):
+            screen.blit(badBattery[nbOfBadBattery],badBatteryRect[nbOfBadBattery])
+        screen.blit(player,playerRect)
+        pg.draw.rect(screen,(0,0,0),(0,100,playScreenWidht,playScreenHeight),10)
+        pg.draw.rect(screen, (0,0,0),(width-180,20,150,30), 5)
+
+                 
+        pg.display.flip()
+
 
 
     for event in pg.event.get():   # dans la liste des evenements .get
         if event.type == pg.QUIT:   # si l'evenement pg.QUIT est activé
             run = False             # on arrete le jeu
             pg.quit                 # et on quitte pygame
-    
-    pg.time.delay(60)               # "fps"
-    screen.blit(battery,batteryRect)
-    for nbOfBadBattery in range(len(badBatteryRect)):
-        screen.blit(badBattery[nbOfBadBattery],badBatteryRect[nbOfBadBattery])
-    screen.blit(player,playerRect)
-
-    
     pg.display.flip()
