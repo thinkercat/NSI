@@ -5,8 +5,35 @@ import random
 
 pg.init()
 
+## CLASSES
+class player():
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################### 
 # Génération de la fenetre
-icon = pg.image.load('NSI/PyGame/MyGame/Assets/gameboy.png')
+icon = pg.image.load('PyGame/MyGame/Assets/gameboy.png')
 
 pg.display.set_icon(icon)
 pg.display.set_caption("Game")             # Définir le titre de la fenetre 
@@ -16,36 +43,36 @@ screen = pg.display.set_mode((width,height))   #Dimensions de la fenetre
 screenBackground = (200,160,160)
 
 
-pg.mixer.music.load('NSI/PyGame/MyGame\Assets\Musiques\chill.mp3')
-pg.mixer.music.play(loops = -1)
+#pg.mixer.music.load('NSI/PyGame/MyGame\Assets\Musiques\chill.mp3')
+#pg.mixer.music.play(loops = -1)
 
 #Dimensions jouables
 playScreenHeight = 900
 playScreenWidht = 900
 ## Player variables
-player = pg.image.load('NSI/PyGame/MyGame/Assets/gameboy.png')
+player = pg.image.load('PyGame/MyGame/Assets/gameboy.png')
 playerRect = player.get_rect()
 playerWidth = player.get_width()
 playerHeight = player.get_height()
 playerVelocity = 10
-#Player pos on start
 playerRect.x = playScreenWidht/2    
 playerRect.y = playScreenHeight/2
 
 ## Battery variables
-battery = pg.image.load('NSI/PyGame/MyGame/Assets/pile-verte.png')
+battery = pg.image.load('PyGame/MyGame/Assets/pile-verte.png')
 batteryRect = battery.get_rect()
-#Battery pos on start
 batteryRect.x = 300
 batteryRect.y = 300
+
 
 ## BadBattery variable
 badBattery = []
 badBatteryRect = [] 
 badBatterySpawn = 2
+
 def badBatteryGeneration(nombreDeBadBattery:int):      
     for nbOfBadBattery in range(nombreDeBadBattery):
-        badBattery.append(pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png'))
+        badBattery.append(pg.image.load('PyGame/MyGame/Assets/pile-rouge.png'))
         badBatteryRect.append(badBattery[nbOfBadBattery].get_rect()) 
 def badBatteryRandomSpawn():
     for nbOfBadBattery in range(len(badBatteryRect)):
@@ -62,7 +89,27 @@ badBatteryEnergy = 10
 energyBar = [width-180,20,150,30]
 energyBarColor = [255,0,0]
 
+def InitialisationDesVariables(): # Variables on start
+    #Player
+    playerRect.x = playScreenWidht/2    
+    playerRect.y = playScreenHeight/2
 
+    #Battery
+    batteryRect.x = 300
+    batteryRect.y = 300
+
+    #BadBattery
+    badBattery = []
+    badBatteryRect = [] 
+    badBatterySpawn = 2
+
+    #Energy
+    maxEnergy = 150
+    playerEnergy = 10
+    batteryEnergy = 10
+    badBatteryEnergy = 10
+    energyBar = [width-180,20,150,30]
+    energyBarColor = [255,0,0]
 
 
 
@@ -77,6 +124,7 @@ while run: #Tant que run = true le jeu marche
 
     if MousePress[0] & playButton.collidepoint(MousePos):
         GamePlay = True
+        InitialisationDesVariables()
 
 
     while GamePlay :
