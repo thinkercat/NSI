@@ -7,7 +7,9 @@ pg.init()
 
 ## CLASSES
 class player():
-    
+    def __init__(self):
+        
+        
 
 
 
