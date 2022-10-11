@@ -3,6 +3,7 @@ import string
 import pygame as pg
 from pygame.locals import *
 import random
+from settings import *
 
 pg.init()
 
@@ -11,7 +12,7 @@ class Player():
     """ 
     Définit les parametres du joueur
     """
-    def __init__(self,spriteFile:string='NSI/PyGame/MyGame/Assets/gameboy.png',energy:int=10,velocity:int=10):
+    def __init__(self,spriteFile:string=ASSET+'gameboy.png',energy:int=10,velocity:int=10):
         self.sprite = pg.image.load(spriteFile)
         self.rect = self.sprite.get_rect()
         self.width = self.sprite.get_width()
@@ -25,25 +26,26 @@ class Player():
 
         if userKeyInput[pg.K_LEFT]: 
             self.rect.x -= self.velocity
-   
+
         if userKeyInput[pg.K_RIGHT]:    
             self.rect.x += self.velocity
-   
+
         if userKeyInput[pg.K_UP]:   
             self.rect.y -= self.velocity
-   
+
         if userKeyInput[pg.K_DOWN]:
             self.rect.y += self.velocity    
 
         if self.rect.x < 0:
             self.rect.x = 0
-        if self.rect.x >= 900 - self.width:
-            self.rect.x = 900 - self.width
-    
+
+        if self.rect.x >= WIDTH - self.width:
+            self.rect.x = WIDTH - self.width
+
         if self.rect.y < 100:
             self.rect.y = 100
-        if self.rect.y >= 1000 - self.height:
-            self.rect.y = 1000 - self.height
+        if self.rect.y >= HEIGHT - self.height:
+            self.rect.y = HEIGHT - self.height
 
 
 
@@ -66,13 +68,12 @@ player1 = Player()
 
 #################################################################################### 
 # Génération de la fenetre
-icon = pg.image.load('NSI/PyGame/MyGame/Assets/gameboy.png')
+icon = pg.image.load(ASSET+'gameboy.png')
 
 pg.display.set_icon(icon)
 pg.display.set_caption("Game")             # Définir le titre de la fenetre 
-height = 1000
-width = 900
-screen = pg.display.set_mode((width,height))   #Dimensions de la fenetre
+
+screen = pg.display.set_mode((WIDTH,HEIGHT))   #Dimensions de la fenetre
 screenBackground = (200,160,160)
 
 
@@ -87,7 +88,7 @@ player1.rect.x = playScreenWidht/2
 player1.rect.y = playScreenHeight/2
 
 ## Battery variables
-battery = pg.image.load('NSI/PyGame/MyGame/Assets/pile-verte.png')
+battery = pg.image.load(ASSET+'pile-verte.png')
 batteryRect = battery.get_rect()
 batteryRect.x = 300
 batteryRect.y = 300
@@ -100,25 +101,26 @@ badBatterySpawn = 2
 
 def badBatteryGeneration(nombreDeBadBattery:int):      
     for nbOfBadBattery in range(nombreDeBadBattery):
-        badBattery.append(pg.image.load('NSI/PyGame/MyGame/Assets/pile-rouge.png'))
+        badBattery.append(pg.image.load(ASSET+'pile-rouge.png'))
         badBatteryRect.append(badBattery[nbOfBadBattery].get_rect()) 
 def badBatteryRandomSpawn():
     for nbOfBadBattery in range(len(badBatteryRect)):
         badBatteryRect[nbOfBadBattery].x = random.randint(0, playScreenWidht)
-        badBatteryRect[nbOfBadBattery].y = random.randint(height-playScreenHeight, playScreenHeight)
+        badBatteryRect[nbOfBadBattery].y = random.randint(HEIGHT-playScreenHeight, playScreenHeight)
         while badBatteryRect[nbOfBadBattery].colliderect(player1.rect) or badBatteryRect[nbOfBadBattery].colliderect(batteryRect):
             badBatteryRect[nbOfBadBattery].x = random.randint(0, playScreenWidht)
-            badBatteryRect[nbOfBadBattery].y = random.randint(height-playScreenHeight, playScreenHeight)           
+            badBatteryRect[nbOfBadBattery].y = random.randint(HEIGHT-playScreenHeight, playScreenHeight)           
 ## Energy(health) variables
 maxEnergy = 150
 playerEnergy = 10
 batteryEnergy = 10
 badBatteryEnergy = 10
-energyBar = [width-180,20,150,30]
+energyBar = [WIDTH-180,20,150,30]
 energyBarColor = [255,0,0]
 
 def InitialisationDesVariables(): # Variables on start
     #Player
+
     player1.rect.x = playScreenWidht/2    
     player1.rect.y = playScreenHeight/2
 
@@ -136,7 +138,7 @@ def InitialisationDesVariables(): # Variables on start
     playerEnergy = 10
     batteryEnergy = 10
     badBatteryEnergy = 10
-    energyBar = [width-180,20,150,30]
+    energyBar = [WIDTH-180,20,150,30]
     energyBarColor = [255,0,0]
 
 
@@ -146,7 +148,7 @@ run = True
 while run: #Tant que run = true le jeu marche
     playerEnergy = 10
     screen.fill(screenBackground)
-    playButton = pg.draw.circle(screen,(200,0,0),(width/2,height/2),200)
+    playButton = pg.draw.circle(screen,(200,0,0),(WIDTH/2,HEIGHT/2),200)
     MousePress = pg.mouse.get_pressed()
     MousePos = pg.mouse.get_pos()
 
@@ -172,7 +174,7 @@ while run: #Tant que run = true le jeu marche
     # When player collide
         if player1.rect.colliderect(batteryRect): 
             batteryRect.x = random.randint(0,playScreenWidht)
-            batteryRect.y = random.randint(height-playScreenHeight, playScreenHeight)
+            batteryRect.y = random.randint(HEIGHT-playScreenHeight, playScreenHeight)
             badBatteryGeneration(badBatterySpawn)
             badBatteryRandomSpawn()
             playerEnergy += batteryEnergy
@@ -222,7 +224,7 @@ while run: #Tant que run = true le jeu marche
             screen.blit(badBattery[nbOfBadBattery],badBatteryRect[nbOfBadBattery])
         screen.blit(player1.sprite,player1.rect)
         pg.draw.rect(screen,(0,0,0),(0,100,playScreenWidht,playScreenHeight),10)
-        pg.draw.rect(screen, (0,0,0),(width-180,20,150,30), 5)
+        pg.draw.rect(screen, (0,0,0),(WIDTH-180,20,150,30), 5)
 
                  
         pg.display.flip()
