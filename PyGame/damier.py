@@ -16,24 +16,24 @@ screen.fill([000,000,000])
 nb_cases = 8
 color = [0,0,0]
 rectangle = [0,0,width//nb_cases,height//nb_cases] # [position de la gauche, position du haut, largeur, hauteur] => "Rect" type from pygame
-colorn=0
+
 for verticalsLines in range(nb_cases):
     
     for carresPerLine in range( nb_cases):
     
 
-        if colorn%2 == 0:
+        if (verticalsLines+carresPerLine)%2 == 0:
             color = [255,255,255]
         else:
             color = [0,0,0]
 
         pg.draw.rect(screen,(color),(rectangle))
         rectangle[0] += width//nb_cases
-        colorn+=1
+
 
     rectangle[0] = 0
     rectangle[1] += width//nb_cases
-    colorn+= 1
+
 
 
 

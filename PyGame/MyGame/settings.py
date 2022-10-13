@@ -1,3 +1,3 @@
 WIDTH = 900
 HEIGHT = 1000
-ASSET = 'PyGame/MyGame/Assets/'
+ASSET = 'Documents/NSI/PyGame/MyGame/Assets/'
