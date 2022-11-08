@@ -1,0 +1,6 @@
+### DEFAULT SCREEN ###
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
+SCREEN_TITLE = "Titre de la fenêtre"
+
+### LEVEL ###

@@ -19,10 +19,23 @@ class Fenetre:
         pg.display.set_mode((self.width,self.height))
         pg.display.set_caption(self.caption)             # Définir le titre de la fenetre
 
-screen1 = Fenetre(300,300,"screen1")
-screen1.build()
-screen2 = Fenetre(300,600,"screen2")
-screen2.build()
+class Level:
+    def __init__(self, background):
+        self.background = background
+
+
+
+
+
+screen = Fenetre(SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_TITLE)
+screen.build()
+
+
+
+
+
+
+
 run = True 
 while run: #Tant que run = true le jeu marche
 
