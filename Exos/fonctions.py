@@ -109,20 +109,32 @@ paramètre, puis renvoie cette nouvelle liste.
 '''
 
 def est_phrase(phrase_unicode:list):
+    est_phrase = []
     for lettre in range(len(phrase_unicode)):
-        phrase_unicode[lettre] = chr(phrase_unicode[lettre])    
-    return phrase_unicode
+        est_phrase.append(chr(phrase_unicode[lettre]))
+
+    return est_phrase
+
+def unlist(liste_characteres:list) -> str:
+    '''
+    Transforme une liste de characteres en string
+    Ex: ['N','A','S','A'] -> NASA
+    '''
+    chaine_str = ''
+    for lettre in liste_characteres:
+        chaine_str += lettre
+    
+    return chaine_str
 
 
 def decrypt(phrase_cryptée:str):
-    
+
     phrase_cryptée_unicode = est_unicode(phrase_cryptée)    
 
     for decalage in range(1,25):
-        
-#        phrase_cryptée_unicode = est_unicode(phrase_cryptée)    
+
       
-        print(est_phrase(decale_lettres(phrase_cryptée_unicode, decalage)))
+        print(unlist(est_phrase(decale_lettres(phrase_cryptée_unicode, decalage))))
 
 
 
@@ -141,6 +153,10 @@ def test_decrypt():
     assert est_phrase([97,98,99,100,101]) == ['a','b','c','d','e']
     print("Fonction est_phrase()....OK")
 
+    assert unlist(['N','A','S','A']) == "NASA"
+    assert unlist(["H","e","l","l","o","W","o","r","l","d"]) == "HelloWorld"
+    print("Fonction unlist()....OK")
 test_decrypt()
 
 print(decrypt("Fcjjm")) # hello decalage 2
+# PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZZRAGYBATCBHEARCNFYRQRPELCGRENYNZNVA
