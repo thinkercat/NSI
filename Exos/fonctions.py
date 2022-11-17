@@ -77,19 +77,13 @@ def est_phrase(phrase_unicode:list):
 
 def decrypt(phrase_cryptée:str):
     
-    phrase_cryptée_unicode = est_unicode(phrase_cryptée)
-    solutions = []
+    phrase_cryptée_unicode = est_unicode(phrase_cryptée)    
 
-    for decalage in range(1,26):
-        print(decale_lettres(phrase_cryptée_unicode, decalage))
-        solutions.append(decale_lettres(phrase_cryptée_unicode, decalage))
-        print(solutions)
+    for decalage in range(1,25):
+
+        print(est_phrase(decale_lettres(phrase_cryptée_unicode, decalage)))
 
 
-    for solution in range(len(solutions)):
-        solutions[solution] = est_phrase(solutions[solution])
-    
-    return solutions
 
 
 def test_decrypt():
@@ -108,4 +102,4 @@ def test_decrypt():
 
 test_decrypt()
 
-print(decrypt("Gdkkn"))
+print(decrypt("Fcjjm"))
