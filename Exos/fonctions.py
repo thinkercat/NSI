@@ -48,7 +48,7 @@ def minmax(nombre01:int,nombre02:int):
 
 
 
-
+############# TP Cryptographie #################
 
 def est_unicode(chainedecharactere:str):  
     ch_unicode = []
@@ -80,7 +80,9 @@ def decrypt(phrase_cryptée:str):
     phrase_cryptée_unicode = est_unicode(phrase_cryptée)    
 
     for decalage in range(1,25):
-
+        
+#        phrase_cryptée_unicode = est_unicode(phrase_cryptée)    
+      
         print(est_phrase(decale_lettres(phrase_cryptée_unicode, decalage)))
 
 
@@ -102,4 +104,4 @@ def test_decrypt():
 
 test_decrypt()
 
-print(decrypt("Fcjjm"))
+print(decrypt("Fcjjm")) # hello decalage 2
