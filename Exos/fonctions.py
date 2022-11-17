@@ -50,24 +50,63 @@ def minmax(nombre01:int,nombre02:int):
 
 ############# TP Cryptographie #################
 
-def est_unicode(chainedecharactere:str):  
+# Première remarque : c'est très bien de préciser le type 
+# de retour de la fonction, et de mettre un exemple.
+# On peut "normaliser" cette pratique, lis le cours sur la
+# spécification des fonctions. Cela donnerait quelque chose
+# comme ça:
+
+def est_unicode(chainedecharactere:str) -> list: 
+    '''
+    renvoie la liste composée des codes Unicode des caractères
+    de la chaîne en paramètre.
+    Exemple:
+    >>> est_unicode('Hello')
+    [104,101,108,108,111]
+    '''
     ch_unicode = []
     for lettre in chainedecharactere:
         ch_unicode.append(ord(lettre.lower()))
         
-    return ch_unicode # retourne une liste : 
-Hello = [104,101,108,108,111]
-
-
+    return ch_unicode  
 
 def decale_lettres(liste:list,decalage:int):
-    
     for lettre in range(len(liste)):
         liste[lettre] += decalage
         if liste[lettre] > 122:
             liste[lettre] -= 26
     return liste # retourne ma liste modifiée
 
+'''
+Le problème se situe dans la fonction suivante (mais aussi
+dans la précédente, sans conséquence.
+C'est une histoire de modification en dehors de la fonction
+(un effet de bord).
+En fait, comme ton paramètre est une liste, les modifications
+que tu lui apportes dans ta fonction vont affecter la liste
+passée en paramètre.
+Et donc après le premier appel, la liste phrase_unicode comporte
+des caractères et non plus des entiers.
+D'où l'erreur.
+
+Exemple, teste:
+
+lst = [1, 2, 3]
+def decale_un(l):
+    for k in range(len(l)):
+        l[k] += 1
+    return l
+
+lst2 = decale_un(lst)
+print(lst2)
+print(lst)
+
+Tu comprends ce qui se passe?
+
+Pour remédier au problème, construis une **nouvelle** liste
+dans ta fonction est_phrase sans toucher à ta liste en 
+paramètre, puis renvoie cette nouvelle liste.
+'''
 
 def est_phrase(phrase_unicode:list):
     for lettre in range(len(phrase_unicode)):
