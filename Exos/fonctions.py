@@ -1,21 +1,22 @@
-
-
 from random import randint
 
-def sommes_entiers(valeur:int):
-    s = 0 
-    for k in range(1, valeur+1):
+
+def sommes_entiers(valeur: int):
+    s = 0
+    for k in range(1, valeur + 1):
         s += k
-    
+
     return s
 
-def comptevoyelles(phrase:str):
+
+def comptevoyelles(phrase: str):
     voyelles = 'aeiouy'
     nb_voyelles = 0
     for lettre in phrase:
         if lettre in voyelles:
             nb_voyelles += 1
     return nb_voyelles
+
 
 def test_nb_voyelles():
     assert comptevoyelles("azerty") == 3
@@ -27,19 +28,18 @@ def test_nb_voyelles():
 
 
 def tirage():
-    tirage = randint(1,18)
+    tirage = randint(1, 18)
     if tirage >= 6:
-        return(6)
+        return (6)
     else:
         return tirage
 
 
-def minmax(nombre01:int,nombre02:int):
+def minmax(nombre01: int, nombre02: int):
     if nombre01 > nombre02:
         return nombre01
     else:
         return nombre02
-
 
 
 ############# TP Cryptographie #################
@@ -50,7 +50,7 @@ def minmax(nombre01:int,nombre02:int):
 # spécification des fonctions. Cela donnerait quelque chose
 # comme ça:
 
-def est_unicode(chainedecharactere:str) -> list: 
+def est_unicode(chainedecharactere: str) -> list:
     '''
     renvoie la liste composée des codes Unicode des caractères
     de la chaîne en paramètre.
@@ -61,18 +61,22 @@ def est_unicode(chainedecharactere:str) -> list:
     ch_unicode = []
     for lettre in chainedecharactere:
         ch_unicode.append(ord(lettre.lower()))
-        
-    return ch_unicode  
 
-def decale_lettres(liste_unicode:list, decalage:int):
-    liste = []
-    i = 0
-    for lettre in liste_unicode:
-        i += 1
-        liste.append(lettre + 1)
-        if liste[i] > 122:
-            liste[i] -= 26
-    return liste # retourne ma liste modifiée
+    return ch_unicode
+
+
+def decale_lettres(liste_unicode: list, decalage: int):
+    result = []
+    for lettre in range(len(liste_unicode)):
+
+        if liste_unicode[lettre] + 1 > 122:
+            result.append(liste_unicode[lettre])
+            result[lettre] -= 25
+        else:
+            result.append(liste_unicode[lettre])
+            result[lettre] += 1
+    return result  # retourne ma liste modifiée
+
 
 '''
 Le problème se situe dans la fonction suivante (mais aussi
@@ -105,14 +109,16 @@ dans ta fonction est_phrase sans toucher à ta liste en
 paramètre, puis renvoie cette nouvelle liste.
 '''
 
-def est_phrase(phrase_unicode:list):
+
+def est_phrase(phrase_unicode: list):
     est_phrase = []
     for lettre in range(len(phrase_unicode)):
         est_phrase.append(chr(phrase_unicode[lettre]))
 
     return est_phrase
 
-def unlist(liste_characteres:list) -> str:
+
+def unlist(liste_characteres: list) -> str:
     '''
     Transforme une liste de characteres en string
     Ex: ['N','A','S','A'] -> NASA
@@ -120,25 +126,20 @@ def unlist(liste_characteres:list) -> str:
     chaine_str = ''
     for lettre in liste_characteres:
         chaine_str += lettre
-    
+
     return chaine_str
 
 
-def decrypt(phrase_cryptée:str):
+def decrypt(phrase_cryptée: str):
+    phrase_cryptée_unicode = est_unicode(phrase_cryptée)
 
-    phrase_cryptée_unicode = est_unicode(phrase_cryptée)    
-
-    for decalage in range(1,25):
-
-      
+    for decalage in range(1, 25):
         print(unlist(est_phrase(decale_lettres(phrase_cryptée_unicode, decalage))))
 
 
-
-
 def test_decrypt():
-    assert est_unicode("Hello") == [104,101,108,108,111]
-    assert est_unicode("abcde") == [97,98,99,100,101]
+    assert est_unicode("Hello") == [104, 101, 108, 108, 111]
+    assert est_unicode("abcde") == [97, 98, 99, 100, 101]
     print("Fonction est_unicode()....OK")
 
     # assert decale_lettres([104,101,108,108,111],1) == [105,102,109,109,112]
@@ -146,14 +147,16 @@ def test_decrypt():
     # assert decale_lettres([121,122],2) == [97,98]
     print("Fonction decale_lettre()....OK")
 
-    assert est_phrase([104,101,108,108,111]) == ['h','e','l','l','o']
-    assert est_phrase([97,98,99,100,101]) == ['a','b','c','d','e']
+    assert est_phrase([104, 101, 108, 108, 111]) == ['h', 'e', 'l', 'l', 'o']
+    assert est_phrase([97, 98, 99, 100, 101]) == ['a', 'b', 'c', 'd', 'e']
     print("Fonction est_phrase()....OK")
 
-    assert unlist(['N','A','S','A']) == "NASA"
-    assert unlist(["H","e","l","l","o","W","o","r","l","d"]) == "HelloWorld"
+    assert unlist(['N', 'A', 'S', 'A']) == "NASA"
+    assert unlist(["H", "e", "l", "l", "o", "W", "o", "r", "l", "d"]) == "HelloWorld"
     print("Fonction unlist()....OK")
+
+
 test_decrypt()
 
-print(decrypt("abcde")) # hello decalage 2
+print(decrypt("abcde"))  # hello decalage 2
 # PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZZRAGYBATCBHEARCNFYRQRPELCGRENYNZNVA
