@@ -28,7 +28,7 @@ def cleanString(encode_string:str) -> list:
 
 def convertToUnicode(formated_list:list)->list:
     '''
-    transform character to unicode\n
+    transform list character to list unicode\n
     Exemple:
     >>> convertToUnicode(['a','b','z'])
     >>> [97,98,122]
