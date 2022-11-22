@@ -1,4 +1,5 @@
-# Decoder 2.0
+#! usr/bin/python
+# Decoder v2.0
 # Python program to decode this message :
 # PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZZRAGYBATCBHEARCNFYRQRPELCGRENYNZNVA
 # Encode => the letter has won +x
