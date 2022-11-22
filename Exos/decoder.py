@@ -5,10 +5,11 @@
 
 # Unicode letter
 # a  [..] z => 97 [..] 122
+import os
 
 def cleanString(encode_string:str) -> list:
     '''
-    format a string to lowercase and keep only letters
+    format a string to lowercase and keep only letters\n
     Exemple:
     >>> cleanString('Hel/l@O')
     >>> ['h','e','l,'l','o']
@@ -26,7 +27,7 @@ def cleanString(encode_string:str) -> list:
 
 def convertToUnicode(formated_list:list)->list:
     '''
-    transform character to unicode
+    transform character to unicode\n
     Exemple:
     >>> convertToUnicode(['a','b','z'])
     >>> [97,98,122]
@@ -40,21 +41,24 @@ def convertToUnicode(formated_list:list)->list:
 
 def shiftUnicode(unicode_list:list, scale:int) -> list:
     '''
-    shift the letters of 'scale'
+    shift the letters of 'scale' and return to 97 if >122\n
     Exemple:
     >>> shiftUnicode([97,98,122],2)
-    >>> [99,100,124]
+    >>> [99,100,98]
     '''
     shifted_list = []
     for unicode_number in unicode_list:
-        shifted_list.append(unicode_number + scale)
+        if unicode_number + scale > 122:
+            shifted_list.append(unicode_number + (scale - 26))
+        else:
+            shifted_list.append(unicode_number + scale)
 
     return shifted_list
 
 
 def convertToChar(unicode_list: list) -> list:
     '''
-    Convert a unicode list to a char list
+    Convert a unicode list to a char list\n
     Exemple:
     >>> convertTochar([97,98,122])
     >>> ['a','b','z']
@@ -68,7 +72,7 @@ def convertToChar(unicode_list: list) -> list:
 
 def convertListToSentence(char_list: list) -> str:
     '''
-    Convert a list of characters to a string
+    Convert a list of characters to a string\n
     Exemple:
     >>> convertListToSentence(['N','A','S','A'])
     >>> 'NASA'
@@ -78,6 +82,37 @@ def convertListToSentence(char_list: list) -> str:
         sentence += letter
 
     return sentence
+
+# MAIN FUNCTION
+def decrypt(encrypt_sentence:str) -> list:
+    '''
+    Decrypt a sentence with character shift\n
+    Exemple:
+    >>> decrypt('abcde')
+    >>> bcdef
+    >>> cdefg
+    >>> ...
+    >>> zabcd
+    '''
+    pm_formated = cleanString(encrypt_sentence)
+    pm_unicode = convertToUnicode(pm_formated)
+    results = []
+    for i in range(1, 27):
+        pm_uni_shift = shiftUnicode(pm_unicode, i)
+        pm_char_shift = convertToChar(pm_uni_shift)
+        results.append(convertListToSentence(pm_char_shift))
+
+    # SAVE ALL RESULTS IN A FILE  
+    header = " _      ____   _____      ______ _____ _      ______ \n| |    / __ \ / ____|    |  ____|_   _| |    |  ____|\n| |   | |  | | |  __     | |__    | | | |    | |__\n| |   | |  | | | |_ |    |  __|   | | | |    |  __|\n| |___| |__| | |__| |    | |     _| |_| |____| |____ \n|______\____/ \_____|    |_|    |_____|______|______|\n\n=--= Decrypted strings =--=\n\n"
+    print("\nCreating File",end="...")
+    with open("decoderLogs.txt", "w") as log_file:
+        log_file.write(header)
+
+        for result in results:
+            log_file.write(result+"\n")
+        print("OK")
+    
+    return results        
 
 
 # DEBUG FUNCTION
@@ -109,10 +144,10 @@ def decoderDebug():
     #shiftUnicode()
     print("shiftUnicode() Function check",end="... ")
     assert shiftUnicode([99,100],1) == [100, 101]
-    assert shiftUnicode([120,122,99],3) == [123, 125, 102]
-    assert shiftUnicode([1, 264, 99],0) == [1, 264, 99]
+    assert shiftUnicode([120,122,99],3) == [97, 99, 102]
+    assert shiftUnicode([1, 56, 99],0) == [1, 56, 99]
     assert shiftUnicode([100, 100, 98, 98], 2) == [102, 102, 100, 100]
-    assert shiftUnicode([300],100) == [400]
+    assert shiftUnicode([121,122,123,124],1) == [122,97,98,99]
     print("OK")
 
     #convertToChar()
@@ -135,3 +170,4 @@ def decoderDebug():
     print("OK")
 
 decoderDebug()
+decrypt("PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZZRAGYBATCBHEARCNFYRQRPELCGRENYNZNVA")
