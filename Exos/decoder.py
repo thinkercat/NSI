@@ -171,4 +171,4 @@ def decoderDebug():
     print("OK")
 
 decoderDebug()
-decrypt("PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZZRAGYBATCBHEARCNFYRQRPELCGRENYNZNVA")
+decrypt("Mh vxlv frqqxh srxu dyrlu uhdolvh oh suhplhu yhulwdeoh surjudpph lqirupdwltxh hw xq odqjdjh gh surjudppdwlrq sruwh prq suhqrp")
