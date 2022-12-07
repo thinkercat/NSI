@@ -1,4 +1,4 @@
-
+#! py
 import matplotlib.pyplot as plt
 
 def syracuse(n:int):

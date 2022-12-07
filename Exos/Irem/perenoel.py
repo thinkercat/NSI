@@ -26,4 +26,4 @@ def main(travellist:list)-> int:
     return nb_immeubles
 
 
-print(main(doTravelList(travel)))
+print(main(doTravelList(travel)))           
