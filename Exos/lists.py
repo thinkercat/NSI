@@ -1,0 +1,26 @@
+def recherche(tab:list,n):
+    
+    occ = len(tab)
+    i = 0
+
+    for v in tab:
+    
+        if v == n:
+            occ = i
+        i += 1
+    
+    return occ
+
+#print(recherche([1,2,3,4],2))
+#print(recherche([1,3,4],2))
+#print(recherche([1,2,3,4,2],2))
+
+for bb in range(1,1001):
+    for br in range(1,1001):
+        for bn in range(1,1001):
+            print(f"bb:{bb} br:{br} bn:{bn}")
+            if bb<br and br<bn:
+                if bb*2 > bn:
+                    if (bb+br+bn)*777 == bb*br*bn:
+                        print(bb,br,bn)
+                        break
