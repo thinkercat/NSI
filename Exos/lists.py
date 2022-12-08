@@ -16,11 +16,9 @@ def recherche(tab:list,n):
 #print(recherche([1,2,3,4,2],2))
 
 for bb in range(1,1001):
-    for br in range(1,1001):
-        for bn in range(1,1001):
-            print(f"bb:{bb} br:{br} bn:{bn}")
-            if bb<br and br<bn:
-                if bb*2 > bn:
-                    if (bb+br+bn)*777 == bb*br*bn:
-                        print(bb,br,bn)
-                        break
+    for br in range(bb,1001):
+        for bn in range(br,(bb*2)):
+            if (bb+br+bn)*777 == bb*br*bn:
+                print(bb,br,bn)
+                print(bb+br+bn)
+                quit()
