@@ -24,33 +24,207 @@ header nav ul{
 }
 
 header nav ul li a{
-    color: #4A4E69;
+    color: #4a4e69;
     text-decoration: none;
     font-size: 20px;
     margin: 0 10px;
-    transition: all 1s ease-out;
+    border-bottom: solid 1px #C9ADA7;
+    transition: all 0.5s ease-out;
 }
 
 header nav ul li a:hover{
-    animation: glow 0.5s ease-out forwards;
+    box-shadow: 0 4px  #C9ADA7;
+    color: #C9ADA7;
 }
-@keyframes glow{
-    0%{
-        box-shadow: 0 0 3px 0 rgba(201, 173, 167, 0);
-        border-radius: 15px;
-    }
-    100%{
-        box-shadow: 0 0 6px 6px rgb(201, 173, 167,100);
-        background-color: rgb(201, 173, 167,100);
-        border-radius: 25px;
-    }
-}
+
 header nav ul li.ref{
-    font-size: 22px;
-    color: #9A8C98;
+    font-size: 18px;
+    color: #4a4e69;
     margin-left: 10px;
 
 }
 header nav ul li.space-between{
-    width: 70%;
+    width: 60%;
+}
+section.acceuil{
+    width: 100%;
+    height: 100vh;
+}
+section.acceuil .acceuil-title{
+    position: absolute;
+    left: 40% ;
+}
+section.acceuil .acceuil-title h1{
+    position: relative;
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+section.acceuil .acceuil-title h1::before{
+    content: '';
+    background: #22223B;
+    position: absolute;
+    transition: all 0.4s ease;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+    border: solid 2px transparent;
+    width: 0%;
+    z-index: -1;
+}
+section.acceuil .acceuil-title h1:hover::before{
+    width: 110%;
+    border-color: #C9ADA7;
+}
+section.acceuil .john-conway-head{
+    position: relative;
+    top: 0;
+    z-index: -2;
+}
+section.acceuil .john-conway-head img{
+    width: 60%;
+    height: 60%;
+    border-radius: 300px;
+}
+section.biography{
+    height: 100vh;
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+section.biography .block1{
+    position: relative;
+    width: auto;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+section.biography .block1 img{
+    width: 40%;
+    height: 90%;
+    border: solid 5px #C9ADA7;
+    box-shadow: -17px 10px #C9ADA7;
+    margin-left: 10%;
+    transition: all 0.8s ease;
+}
+section.biography .block1 img:hover{
+    box-shadow: 17px 10px #C9ADA7;
+}
+section.biography .block1 p{
+    width: 50%;
+    height: auto;
+    margin: 0 10%;
+    text-align: end;
+    font-size: 1.15em;
+}
+section.biography .block2{
+    position: relative;
+    width: auto;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+section.biography .block2 img{
+    width: 40%;
+    height: 90%;
+    border: solid 5px #C9ADA7;
+    box-shadow: 17px 10px #C9ADA7;
+    margin-right: 10%;
+    transition: all 0.8s ease;
+
+}
+section.biography .block2 img:hover{
+    box-shadow: -17px 10px #C9ADA7;
+}
+section.biography .block2 p{
+    width: 50%;
+    height: auto;
+    margin: 0 10%;
+    font-size: 1.15em;
+}
+section.achievements{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+section.achievements .element-container{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: solid 5px #C9ADA7;
+    overflow: scroll;
+}
+section.achievements .element-container::-webkit-scrollbar-corner{
+    visibility: hidden;
+}   
+section.achievements .element-container::-webkit-scrollbar{
+    visibility: hidden;
+    width: 20px;
+}
+
+section.achievements .element-container::-webkit-scrollbar-thumb{
+    visibility: visible;
+    border: solid 5px #22223B;
+    border-radius: 15px;
+    background: #C9ADA7;
+}
+section.achievements .element-container .element{
+    width: 700px;
+    height: 200px;
+    border: solid 2px #C9ADA7;
+    margin: 30px;
+    display: flex;
+    transition: all 1s ease;
+}
+section.achievements .element-container .element:hover{
+    box-shadow: 0 0 5em #4a4e69;
+}
+section.achievements .element-container .element .element-left{
+    width: 100%;
+    height: 100%;
+    background: #4a4e69;
+}
+section.achievements .element-container .element .element-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    padding: 10px;
+}
+section.achievements .element-container .element .element-right p{
+    text-align: justify;
+    margin: auto 0;
+}
+footer{
+    width: 100%;
+    height: 300px;
+    background: #4a4e69;
+}
+footer nav{
+    display: flex;
+    justify-content: center;
+}
+footer nav ul{
+    list-style: none;
+    border: solid 4px #22223B;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 50px;
+    box-shadow: 10px 10px .1em #9A8C98;
+}
+footer nav ul a{
+    color: #fff;
+    margin: 10px;
 }
