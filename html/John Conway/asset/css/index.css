@@ -196,6 +196,10 @@ section.achievements .element-container .element .element-left{
     height: 100%;
     background: #4a4e69;
 }
+section.achievements .element-container .element .element-left img{
+    width: 100%;
+    height: 100%;
+}
 section.achievements .element-container .element .element-right{
     display: flex;
     flex-direction: column;
