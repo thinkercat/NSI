@@ -211,6 +211,29 @@ section.achievements .element-container .element .element-right p{
     text-align: justify;
     margin: auto 0;
 }
+.quiz{
+    width: 100%;
+    height: 300px;
+    text-align: center;
+}
+.quiz h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.quiz a{
+    text-decoration: none;
+    color: #C9ADA7;
+    font-size: 50px;
+    border: solid 3px #C9ADA7;
+    border-radius: 0;
+    transition: 300ms ease-in-out;
+}
+.quiz a:hover{
+    border: solid 3px #C9ADA7;
+    padding: 5px;
+    border-radius: 15px;
+}
 footer{
     width: 100%;
     height: 300px;
