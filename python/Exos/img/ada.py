@@ -1,6 +1,6 @@
 import imageio
 
-image = imageio.imread('python/Exos/imgada/ada.png')
+image = imageio.imread('python/Exos/img/ada.png')
 
 hauteur = image.shape[0]
 largeur = image.shape[1]

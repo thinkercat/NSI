@@ -1,6 +1,6 @@
 import imageio
 
-image = imageio.imread('python/Exos/imgada/pikachu.png')
+image = imageio.imread('python/Exos/img/pikachu.png')
 
 hauteur = image.shape[0]
 largeur = image.shape[1]
@@ -11,3 +11,4 @@ for y in image:
         print(pixel)
         if pixel != [0, 255, 0, 255]:
             pixels += 1
+

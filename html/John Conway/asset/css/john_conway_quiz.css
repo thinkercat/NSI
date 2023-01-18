@@ -38,9 +38,10 @@ header{
 .quiz ul li button{
     font-weight: bold;
     background: #C9ADA7;
-    padding: 5px;
+    padding: 10px 20px;
     border: none;
 }
 .quiz ul li button:hover{
-    cursor: ;
+    background: #98837f;
+    cursor: pointer;
 }
