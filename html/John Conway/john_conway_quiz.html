@@ -16,25 +16,39 @@
         <ul>
             <li>
                 <p>This is a question ?</p>
-                <button type="button" onclick="">Oui</button>
-                <button type="button" onclick="">Non</button>
+                <button type="button" id = "a0-0" onclick="response(id)">Oui</button>
+                <button type="button" id = "a0-1" onclick="response(id)">Non</button>
             </li>
             <li>
                 <p>This is a question ?</p>
-                <button type="button" onclick="">Oui</button>
-                <button type="button" onclick="">Non</button>
+                <button type="button" id = "a1-0" onclick="">Oui</button>
+                <button type="button" id = "a1-1" onclick="">Non</button>
             </li>
             <li>
                 <p>This is a question ?</p>
-                <button type="button" onclick="">Oui</button>
-                <button type="button" onclick="">Non</button>
+                <button type="button" id = "a2-0" onclick="">Oui</button>
+                <button type="button" id = "a2-1" onclick="">Non</button>
             </li>
             <li>
                 <p>This is a question ?</p>
-                <button type="button" onclick="">Oui</button>
-                <button type="button" onclick="">Non</button>
+                <button type="button" id = "a3-0" onclick="">Oui</button>
+                <button type="button" id = "a3-1" onclick="">Non</button>
             </li>
-            
+            <script>
+
+                function response(id, response)
+                {
+                    if (id == 'a0-0'){
+                        console.log("Bad answer")
+                        document.getElementById(id).classList.add("wrong")
+                    }
+                    if(id == 'a0-1')
+                    {
+                        console.log("Good answer")
+                        document.getElementById(id).classList.add("nice")
+                    }
+                }
+            </script>
         </ul>
     </section>
 </body>
