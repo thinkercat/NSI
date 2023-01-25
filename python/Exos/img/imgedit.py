@@ -40,12 +40,18 @@ def photomaton(image):
         
     hauteur = image.shape[0]
     largeur = image.shape[1]
-    cimage = image.copy()
-    for y in range(hauteur//2):
-        for x in range(largeur//2):
-            pass     
+    image_p = image.copy()
+    for y in range(hauteur):
+        for x in range(largeur):
+            #print(f'y:{y}   x:{x}')
+            h = hauteur//4
+            l = largeur//4
+            if x%2 == 0:
+                image_p[y][h*2+x//2] = image[y][x]
 
-    return image
+            else:
+                image_p[y][x-1] = image[y][x]
+    return image_p
             
 
 
@@ -55,8 +61,8 @@ def photomaton(image):
 #image = imageio.imread('/home/nsi/Documents/NSI/VanGogh_Arles.png')
 #image = imageio.imread('/home/nsi/Documents/NSI/carrescolor.png')
 #windows
-image = imageio.imread('NSI\\VanGogh_Arles.png')
-#image = imageio.imread('NSI\\carrescolor.png')
+#image = imageio.imread('NSI\\VanGogh_Arles.png')
+image = imageio.imread('NSI\\carrescolor.png')
 hauteur = image.shape[0]
 largeur = image.shape[1]
 print(f'{hauteur}:{largeur}')
