@@ -27,11 +27,31 @@ def gris(R:int,G:int,B:int):
 def flip(image):
     hauteur = image.shape[0]
     largeur = image.shape[1]
+    imagecopy = image.copy()
     for y in range(hauteur):
         for x in range(largeur):
-            image[y][x] = image[y][largeur-x-1]
+            if x < largeur//2:
+                image[y][x] = image[y][largeur-x-1]
+            else:
+                image[y][x] = imagecopy[y][largeur-x-1]
     return image
 
+def photomaton(image):
+        
+    hauteur = image.shape[0]
+    largeur = image.shape[1]
+    imagec = image.copy()
+    for y in range(hauteur):
+        for x in range(largeur):
+
+            if y%2 == 0:
+                if x%2 == 0:
+                    image[y][x] = imagec[y][x]
+                else:
+                    image[y][x] = imagec[y][x+largeur//2-1]
+            
+    return image
+            
 
 
 
@@ -39,10 +59,7 @@ def flip(image):
 
 
 
-
-
-
-image = imageio.imread(str(input("Insérez le chemin de l'image à modifier : ")))
+image = imageio.imread('/home/nsi/Documents/NSI/VanGogh_Arles.png')
 hauteur = image.shape[0]
 largeur = image.shape[1]
 
@@ -51,6 +68,6 @@ largeur = image.shape[1]
 for y in range(hauteur):
     for x in range(largeur):
         R,G,B = image[y][x]
-        image[y][x] = gris(R,G,B)
+        #image[y][x] = gris(R,G,B)
 
-imageio.imsave('imagemodifie.png', flip(image))
+imageio.imsave('imagemodifie.png', photomaton(image))
