@@ -1,5 +1,5 @@
-import imageio
-
+#import imageio
+import imageio.v2 as imageio
 def filtre(R:int,G:int,B:int, color = 'rouge')->list:
     '''
     Affiche l'image avec un filtre de couleur rouge, vert ou bleu
@@ -40,34 +40,31 @@ def photomaton(image):
         
     hauteur = image.shape[0]
     largeur = image.shape[1]
-    imagec = image.copy()
-    for y in range(hauteur):
-        for x in range(largeur):
+    cimage = image.copy()
+    for y in range(hauteur//2):
+        for x in range(largeur//2):
+            pass     
 
-            if y%2 == 0:
-                if x%2 == 0:
-                    image[y][x] = imagec[y][x]
-                else:
-                    image[y][x] = imagec[y][x+largeur//2-1]
-            
     return image
             
 
 
 
 
-
-
-
-image = imageio.imread('/home/nsi/Documents/NSI/VanGogh_Arles.png')
+#linux
+#image = imageio.imread('/home/nsi/Documents/NSI/VanGogh_Arles.png')
+#image = imageio.imread('/home/nsi/Documents/NSI/carrescolor.png')
+#windows
+image = imageio.imread('NSI\\VanGogh_Arles.png')
+#image = imageio.imread('NSI\\carrescolor.png')
 hauteur = image.shape[0]
 largeur = image.shape[1]
+print(f'{hauteur}:{largeur}')
 
 
-
-for y in range(hauteur):
-    for x in range(largeur):
-        R,G,B = image[y][x]
-        #image[y][x] = gris(R,G,B)
+# for y in range(hauteur):
+#     for x in range(largeur):
+#         R,G,B = image[y][x]
+#         #image[y][x] = gris(R,G,B)
 
 imageio.imsave('imagemodifie.png', photomaton(image))
