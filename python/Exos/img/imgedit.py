@@ -24,6 +24,28 @@ def gris(R:int,G:int,B:int):
     G = int(0.2126*R+0.7152*G+0.0722*B)
     return [G,G,G]
 
+def popart(R:int,G:int,B:int)->list:
+    '''
+    Renvoie la valeure majoritaire + 50
+    '''
+    color = [R,G,B]
+
+    if max(color) + 50 < 255:
+        color = [int(str(c).replace(str(max(color)),'255')) for c in color]
+    else:
+        color = [int(str(c).replace(str(max(color)),str(max(color)+50))) for c in color]
+    return color
+def flopart(R:int,G:int,B:int)->list:
+    '''
+    Renvoie la valeure majoritaire + 50
+    '''
+    color = [R,G,B]
+
+    if max(color) - 50 < 0:
+        color = [int(str(c).replace(str(max(color)),'0')) for c in color]
+    else:
+        color = [int(str(c).replace(str(max(color)),str(max(color)-50))) for c in color]
+    return color
 def flip(image):
     hauteur = image.shape[0]
     largeur = image.shape[1]
@@ -40,19 +62,29 @@ def photomaton(image):
         
     hauteur = image.shape[0]
     largeur = image.shape[1]
-    image_p = image.copy()
+    image_p = []
+    ypair = []
+    yimpair = []
     for y in range(hauteur):
-        for x in range(largeur):
-            #print(f'y:{y}   x:{x}')
-            h = hauteur//4
-            l = largeur//4
-            if x%2 == 0:
-                image_p[y][h*2+x//2] = image[y][x]
+        if y%2 == 0:
+            ypair.append(image[y])
+        else:
+            yimpair.append(image[y])
+    image_p = ypair + yimpair
 
+    for y in range(hauteur):
+        xpair = []
+        ximpair = []
+        for x in range(largeur):
+            if x%2 == 0:
+                xpair.append(image[y][x])
             else:
-                image_p[y][x-1] = image[y][x]
+                ximpair.append(image[y][x])
+        image[y] = xpair + ximpair
     return image_p
-            
+
+def pixelisation(etendue = 1):
+    pass       
 
 
 
@@ -61,16 +93,16 @@ def photomaton(image):
 #image = imageio.imread('/home/nsi/Documents/NSI/VanGogh_Arles.png')
 #image = imageio.imread('/home/nsi/Documents/NSI/carrescolor.png')
 #windows
-#image = imageio.imread('NSI\\VanGogh_Arles.png')
-image = imageio.imread('NSI\\carrescolor.png')
+image = imageio.imread('NSI\\VanGogh_Arles.png')
+#image = imageio.imread('NSI\\carrescolor.png')
 hauteur = image.shape[0]
 largeur = image.shape[1]
 print(f'{hauteur}:{largeur}')
 
 
-# for y in range(hauteur):
-#     for x in range(largeur):
-#         R,G,B = image[y][x]
-#         #image[y][x] = gris(R,G,B)
+for y in range(hauteur):
+    for x in range(largeur):
+        R,G,B = image[y][x]
+        image[y][x] = flopart(R,G,B)
 
-imageio.imsave('imagemodifie.png', photomaton(image))
+imageio.imsave('imagemodifie.png', image)
