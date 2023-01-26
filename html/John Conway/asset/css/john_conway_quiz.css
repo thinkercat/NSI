@@ -18,6 +18,7 @@ header{
     padding: 20px;
     text-align: center;
 }
+
 .quiz{
     text-align: center;
 }
@@ -35,28 +36,12 @@ header{
     border: 3px solid #C9ADA7;
     padding: 10px 50px;
 }
-.quiz ul li button{
-    font-weight: bold;
-    background: #C9ADA7;
-    padding: 10px 20px;
-    border: none;
+.quiz ul li.bred{
+    border: 3px solid #c65a41;
 }
-.quiz ul li button.wrong{
-    font-weight: bold;
-    background: #b62808;
-    padding: 5px;
-    border: none;
+.quiz ul li.bgreen{
+    border: 3px solid #41c659;
 }
-.quiz ul li button.nice{
-    font-weight: bold;
-    background: #4eb608;
-    padding: 5px;
-    border: none;
-}
-.quiz ul li button:hover{
-<<<<<<< HEAD
-=======
-    background: #98837f;
->>>>>>> d2c840fdf28136ac8bbc71c5bd1396d9949bf99f
-    cursor: pointer;
+.quiz .submit{
+    border: none;   
 }

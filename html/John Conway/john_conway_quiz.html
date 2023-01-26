@@ -14,38 +14,58 @@
     </header>
     <section class="quiz">
         <ul>
-            <li>
+            <li id="0">
                 <p>This is a question ?</p>
-                <button type="button" id = "a0-0" onclick="response(id)">Oui</button>
-                <button type="button" id = "a0-1" onclick="response(id)">Non</button>
+                <input type="radio" name="0" value="true">Oui</button>
+                <input type="radio" name="0" value="false">Non</button>
             </li>
+            <li id="1">
+                <p>This is a question ?</p>
+                <input type="radio" name="1" value="true">Oui</button>
+                <input type="radio" name="1" value="false">Non</button>
+            </li id="2">
             <li>
                 <p>This is a question ?</p>
-                <button type="button" id = "a1-0" onclick="">Oui</button>
-                <button type="button" id = "a1-1" onclick="">Non</button>
+                <input type="radio" name="2" value="true">Oui</button>
+                <input type="radio" name="2" value="false">Non</button>
             </li>
-            <li>
+            <li id="3">
                 <p>This is a question ?</p>
-                <button type="button" id = "a2-0" onclick="">Oui</button>
-                <button type="button" id = "a2-1" onclick="">Non</button>
+                <input type="radio" name="3" value="true">Oui</button>
+                <input type="radio" name="3" value="false">Non</button>
             </li>
-            <li>
-                <p>This is a question ?</p>
-                <button type="button" id = "a3-0" onclick="">Oui</button>
-                <button type="button" id = "a3-1" onclick="">Non</button>
+            <li class="submit">
+                <button type="button" id="submit" onclick="check()">Résultat</button>
             </li>
             <script>
 
-                function response(id, response)
+                function check()
                 {
-                    if (id == 'a0-0'){
-                        console.log("Bad answer")
-                        document.getElementById(id).classList.add("wrong")
-                    }
-                    if(id == 'a0-1')
-                    {
-                        console.log("Good answer")
-                        document.getElementById(id).classList.add("nice")
+                    var questions = [document.getElementsByName('0'),
+                                    document.getElementsByName('1'),
+                                    document.getElementsByName('2'),
+                                    document.getElementsByName('3')]
+
+                    var q_borders = [document.getElementById('0'),
+                                    document.getElementById('1'),
+                                    document.getElementById('2'),
+                                    document.getElementById('3')]
+                    var response = ['true','false','true','false']
+
+                    for(let i = 0; i<questions.length; i++){
+                        for(let j = 0; j<questions[i].length; j++){
+                            if(questions[i][j].checked){
+                                console.log(response[parseInt(questions[i][j].name)])
+                                if(questions[i][j].value == response[parseInt(questions[i][j].name)]){
+                                    q_borders[i].classList.add("bgreen")
+                                
+                                }
+                                else{
+                                    q_borders[i].classList.add("bred")
+                                }
+                            }
+                            
+                        }
                     }
                 }
             </script>
