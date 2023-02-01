@@ -282,8 +282,12 @@ def menu(image = vg_img):
         save(image)
 
     elif chx == 7:
-        print("Génération de l'image . . .")
-        image = photomaton(image)
+        rep = int(input("Entrez un nombre de répitition : "))
+        print("Génération de l'image . . . ")
+
+        for n in range(rep):
+            image = photomaton(image)
+            
         save(image)
 
     elif chx == 8:
