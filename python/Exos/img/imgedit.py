@@ -1,3 +1,6 @@
+# Eliott LAURE-GERMAIN
+
+
 #----------IMPORTS-----------#
 import os
 import sys
