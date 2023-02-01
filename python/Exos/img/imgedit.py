@@ -1,10 +1,13 @@
 #----------IMPORTS-----------#
-#import imageio
+import os
+import sys
 from math import *
-import imageio.v2 as imageio
+import imageio
+#import imageio.v2 as imageio
+
 
 #--------------CODES--------------#
-def filtre(R:int,G:int,B:int, color = 'rouge')->list:
+def filtre(R:int,G:int,B:int, color = 'rouge')->list:   
     '''
     Affiche l'image avec un filtre de couleur rouge, vert ou bleu
     '''
@@ -15,11 +18,15 @@ def filtre(R:int,G:int,B:int, color = 'rouge')->list:
     elif color == 'bleu':
         return [0,0,B]
 
+#-
+
 def negatif(R:int,G:int,B:int)->list:
     '''
     Renvoie les pixels en négatifs
     '''
     return [255-R,255-G,255-B]
+
+#-
 
 def gris(R:int,G:int,B:int):
     '''
@@ -27,6 +34,8 @@ def gris(R:int,G:int,B:int):
     '''
     G = int(0.2126*R+0.7152*G+0.0722*B)
     return [G,G,G]
+
+#-
 
 def popart(R:int,G:int,B:int)->list:
     '''
@@ -40,6 +49,8 @@ def popart(R:int,G:int,B:int)->list:
         color = [int(str(c).replace(str(max(color)),str(max(color)+50))) for c in color]
     return color
 
+#-
+
 def flopart(R:int,G:int,B:int)->list:
     '''
     Renvoie la valeure majoritaire - 50
@@ -51,6 +62,8 @@ def flopart(R:int,G:int,B:int)->list:
     else:
         color = [int(str(c).replace(str(max(color)),str(max(color)-50))) for c in color]
     return color
+
+#-
 
 def flip(image:list)->list:
     '''
@@ -67,6 +80,8 @@ def flip(image:list)->list:
                 image[y][x] = imagecopy[y][largeur-x-1]
     return image
 
+#-
+
 def photomaton(image:list)->list:
     '''
     Divise l'image en 4 images
@@ -78,20 +93,27 @@ def photomaton(image:list)->list:
         for x in range(largeur):
                 if y%2 == 0:
                     if x%2 == 0:
-                        cimage[y//2 + 128][x//2 + 128] = image[y][x]
+                        cimage[y//2 + hauteur//2][x//2 + largeur//2] = image[y][x]
                     else:
-                        cimage[y//2 + 128][x//2] = image[y][x]
+                        cimage[y//2 + hauteur//2][x//2] = image[y][x]
+                elif x%2 == 0:
+                    cimage[y//2][x//2 + largeur//2] = image[y][x]
                 else:
                     cimage[y//2][x//2] = image[y][x]
 
     return cimage
 
+#-
+
 def pixelisation(image,etendue = 6):
     '''
     Pixelise l'image (l'étendue de pixelisation peut varier)
     '''
-    if etendue > 256:
-        etendue = 256
+    hauteur = image.shape[0]
+    largeur = image.shape[1]
+
+    if etendue > largeur:
+        etendue = largeur
         
     if 256%etendue != 0:
         while 256%etendue != 0:
@@ -120,6 +142,8 @@ def pixelisation(image,etendue = 6):
 
                     cimage[cy*etendue+y][cx*etendue+x] = cmoy
     return cimage
+
+#-
 
 def flou(image,etendue = 3):
     '''
@@ -150,8 +174,19 @@ def flou(image,etendue = 3):
             cimage[y][x] = cmoy
     return cimage
 
+vg_img = imageio.imread('https://cgouygou.github.io/1NSI/T08_Extras/2Projets/images/vangogh/VanGogh_Arles.png')
 #---------CONSOLE---------#
-def menu():
+def menu(image = vg_img):
+
+    def save(image):
+        print("Image Générée !")
+        savepath = str(input("Entrez le chemin de sauvegarde de l'image, en précisant son nom et son extension (.png, .jpeg) : "))
+        imageio.imsave(savepath,image)
+        print(f"Image sauvegardée à : {savepath}")
+
+    hauteur = image.shape[0]
+    largeur = image.shape[1]
+   
     print(  "*********** IMAGE EDIT 2000 ***********")
     print(  "[0] Choisir une image   [5] Négatif\n",
             "[1] Filtre de couleur   [6] Flip\n",
@@ -162,16 +197,14 @@ def menu():
     chx = int(input("Entrez un nombre : "))
 
     if chx == 0 :
-        pathimage = str(input("Entrez le chemin de l'image avec son nom et son extension"))
-        image = imageio.imread(pathimage)
+        pathimage = str(input("Entrez le chemin de l'image avec son nom et son extension : "))
+        cimage = imageio.imread(pathimage)
         hauteur = image.shape[0]
         largeur = image.shape[1]
-        menu()
-    else:
-        image = imageio.imread('NSI\\VanGogh_Arles.png')
-        hauteur = image.shape[0]
-        largeur = image.shape[1]
-    if chx == 1:
+        print(f"Votre image : {pathimage}")
+        menu(image = cimage)
+
+    elif chx == 1:
         print("De quelle couleur doit être le filtre ?\n",
                 "[1] Rouge  [2] Vert    [3] Bleu")
         chxcouleur = int(input("Entrez le numéro de la couleur: "))
@@ -187,51 +220,85 @@ def menu():
         print("Génération de l'image . . .")
         for y in range(hauteur):
             for x in range(largeur):
-                R,G,B = image[y][x]
-                image[y][x] = filtre(R,G,B, color = couleur)
+                if len(image[y][x]) == 3:
+                    R,G,B = image[y][x]
+                    image[y][x] = filtre(R,G,B, couleur)
+                else:
+                    R,G,B,A = image[y][x]
+                    image[y][x] = filtre(R,G,B, couleur)+ [A]
+        save(image)
         
     elif chx == 2:
         print("Génération de l'image . . .")
         for y in range(hauteur):
             for x in range(largeur):
-                R,G,B = image[y][x]
-                image[y][x] = popart(R,G,B,)
+                if len(image[y][x]) == 3:
+                    R,G,B = image[y][x]
+                    image[y][x] = popart(R,G,B)
+                else:
+                    R,G,B,A = image[y][x]
+                    image[y][x] = popart(R,G,B)+ [A]
+        save(image)
+
     elif chx == 3:
         print("Génération de l'image . . .")
         for y in range(hauteur):
             for x in range(largeur):
-                R,G,B = image[y][x]
-                image[y][x] = flopart(R,G,B,)
+                if len(image[y][x]) == 3:
+                    R,G,B = image[y][x]
+                    image[y][x] = flopart(R,G,B)
+                else:
+                    R,G,B,A = image[y][x]
+                    image[y][x] = flopart(R,G,B)+ [A]
+        save(image)
+
     elif chx == 4:
         print("Génération de l'image . . .")
         for y in range(hauteur):
             for x in range(largeur):
-                R,G,B = image[y][x]
-                image[y][x] = gris(R,G,B,)
+                if len(image[y][x]) == 3:
+                    R,G,B = image[y][x]
+                    image[y][x] = gris(R,G,B)
+                else:
+                    R,G,B,A = image[y][x]
+                    image[y][x] = gris(R,G,B)+ [A]
+        save(image)
+
     elif chx == 5:
         print("Génération de l'image . . .")
         for y in range(hauteur):
             for x in range(largeur):
-                R,G,B = image[y][x]
-                image[y][x] = negatif(R,G,B,)
+                if len(image[y][x]) == 3:
+                    R,G,B = image[y][x]
+                    image[y][x] = negatif(R,G,B)
+                else:
+                    R,G,B,A = image[y][x]
+                    image[y][x] = negatif(R,G,B) + [A]
+        save(image)
+
     elif chx == 6:
         print("Génération de l'image . . .")
         image = flip(image)
+        save(image)
+
     elif chx == 7:
         print("Génération de l'image . . .")
         image = photomaton(image)
+        save(image)
+
     elif chx == 8:
         print("Génération de l'image . . .")
         image = pixelisation(image)
+        save(image)
+
     elif chx == 9:
         print("Génération de l'image . . . cela peut prendre un certains temps")
         image = flou(image)
+        save(image)
+
     else:
         print("Choix Invalide, il doit correspondre au numéro de l'action que vous souhaitez éxecuter !")
         menu()
     
-    print("Image Générée !")
-    savepath = str(input("Entrez le chemin de sauvegarde de l'image, en précisant son nom et son extension (.png, .jpeg) : "))
-    imageio.imsave(savepath,image)
-    print(f"Image sauvegarder à : {savepath}")
+
 menu()
