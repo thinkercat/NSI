@@ -1,5 +1,5 @@
 # Eliott LAURE-GERMAIN
-
+# Mini projet : image
 
 #----------IMPORTS-----------#
 import os
