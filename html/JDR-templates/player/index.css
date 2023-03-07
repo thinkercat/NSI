@@ -1,55 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&display=swap');
-/* https://coolors.co/palette/191d32-282f44-453a49-6d3b47 */
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+/* https://coolors.co/020109-17181f-1a1b21-22272a-a7a79f-784c2a-f3d278 */
 :root{
-    --background-dark: #191D32;
-    --background: #282F44;
-    --text-emphasis: #453A49;
-    --text-color: #6D3B47;
+
+    /* Color Palette */
+    --color-black: #020109;
+    --color-raisin-black: #1A1B21;
+    --color-raisin-black-dark: rgba(23, 24, 31, .9);
+    --color-gunmetal: #22272A;
+    --color-ash-grey: #a7a79f;
+    --color-kobiche: #784C2A;
+    --color-jasmine: #f3d278;
 }
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Josefin Sans', sans-serif;
-    color: var(--text-color);
+    font-family: 'Yeseva One', sans-serif;
+    color: var(--color-kobiche);
 }
 body{
-    background: var(--background);
     width: 100vw;
     height: 100vh;
-}
-header{
-    display: flex;
-    width: 100vw;
-    height: 10vh;
-    padding: 0 100px;
-    background: var(--background-dark);
-    box-shadow: 0 10px 25px rgba(29, 29, 29, .5);
-    justify-content: space-between;
-    align-items: center;
-}
-.container{
-    width: 100vw;
-    height: calc(100vh - 10vh);
-
     display: flex;
     align-items: center;
 }
-.container .settings{
-    width: 15%;
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.sidebar{
+    background: #f3d278;
+    width: 20vw;
     height: 100%;
 
-    left: 0;
-    border-right: 2px solid #191D32;
-}
-.container .game{
-    width: 65%;
-    height: 100%;
-}
-.container .chat{
-    width: 25%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    right: 0;
-    border-left: 2px solid #191D32;
+    border-right: 2px solid var(--color-raisin-black);
 }
+.sidebar .settings-container{
+    width: 100%;
+    height: 40%;
+    background: #22272A;
+}
+.sidebar .hero-container{
+    width: 100%;
+    height: 60%;
+    background: #020109;
+}
+
