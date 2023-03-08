@@ -1,0 +1,64 @@
+{
+    "0" : {
+        "require": 0,
+        "cost":0,
+        "luck": 0,
+        "content": "Vous venez de vous reveiler, seul, dans un hôpital abandonnée." 
+    },
+
+    "00":{
+        "require" : 0,
+        "cost" : 0,
+        "luck": 0,
+        "content": "Crier pour esperer un signe de vie en réponse"
+    },
+    "01":{
+        "require" : 0,
+        "cost" : 0,
+        "luck" : 2,
+        "content": "rester discret"
+    },
+    "01t":{
+        "cost":0,
+        "content":"Vous êtes sorti de l'hôpitale sans croiser personnes, une orde de corbeaux plane au dessus de vous"
+    },
+    "01f":{
+        "cost":0,
+        "content":"Après quelques pas ors de votre chambre, un homme apparait au bout du couloir et vous interpèle"
+    },
+    "01f0":{
+        "require" : 0,
+        "cost" : 0,
+        "luck" : 12,
+        "content" : "attendre" 
+    },
+    "01f1":{
+        "require":5,
+        "cost": 0,
+        "luck": 5,
+        "content": "fuir en courant"
+    },
+
+    "000":{
+        "require" : 0,
+        "cost" : 0,
+        "luck" : 0,
+        "content": "Un être gluant sort du placart et se précipite sur vous"
+    },
+    "0000":{
+        "require": 1,
+        "cost" : 0,
+        "luck" : 15,
+        "content" : "terrorisé vous criez de toutes vos forces"
+    },
+    "0000t":{
+        "cost" : 2,
+        "content": ""
+    },
+    "0000f":{
+        "cost" : 10,
+        "content" : "%DEAD%"
+    }
+    
+
+}
