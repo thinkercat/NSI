@@ -21,6 +21,7 @@
 }
 body{
     background-image: url('./abandoned_city.png');
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
