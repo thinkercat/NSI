@@ -21,21 +21,48 @@ class History():
         self.name = name
         self.description = description
         self.author = author
+        
         with open(history_json_file_path, 'r') as hd:
-            self.history_data = json.load(hd)
-        self.nodes = {}
-    
-    def loadNodes(self):
-        '''
-        Create Node Object for nodes in json data
-        '''
-        for e in self.history_data:
-            self.nodes[e] = Node(self.history_data, e)
+            self.nodes = json.load(hd)
+
+        self.currentNode = 0
 
 
+
+    def nextNode(self, nodeId):
+        '''
+        renvoie les prochains noeuds en fonctions du noeud mit en paramètre
+        '''
+        nextNodes = []
+        pos = len(nodeId)
+
+        for id in self.nodes:
+            if len(id) == pos+1 and nodeId == id[0:pos]:
+                nextNodes.append(id)
+
+        return nextNodes
+
+    def previousNode(self, nodeId):
+        '''
+        renvoie le noeud précèdent du noeud mit en paramètre
+        '''
+        for id in self.nodes:
+            if nodeId[0:-1] == id:
+                return id
+
+    def run(self):
+        currentNode = '0'
+
+        while len(self.nextNode(currentNode)) > 0:
+            print(self.nodes[currentNode]['content'])
+            for nId in self.nextNode(currentNode):
+                print(f"{nId} : {self.nodes[nId]['content']}")
+
+            currentNode = str(input())
+        
 
 histoire = History()
-histoire.loadNodes()
+histoire.run()
 
 
 
