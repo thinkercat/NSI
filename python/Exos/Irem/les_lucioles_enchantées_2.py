@@ -1,4 +1,4 @@
-import imageio.v2 as imageio
+import imageio as imageio
 import numpy
 PATH = './Python/Irem 2022-2023/'
 image = imageio.imread(PATH+'plan_lucioles.png')
@@ -10,14 +10,13 @@ largeur = image.shape[1]
 #print(type(image))
 def voisines(h,l):
     voisines = []
-    for y in range(hauteur):
-        for x in range(largeur):
-            
-            if len(voisines) <= 64:
-                if abs(h-y) <= 8 and abs(l-x) <= 8:
-                    voisines.append([y,x])
-            else:
-                return voisines
+    for y in range(hauteur//8):
+        for x in range(largeur//8):
+
+            if abs(h-y) <= 8 and abs(l-x) <= 8:
+                voisines.append([y,x])
+
+            return voisines
 
 def pixelcolor(h,l):
     R,V,B = image[h,l]
