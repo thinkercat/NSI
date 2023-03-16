@@ -1,3 +1,4 @@
+const backgroundImage = document.body
 
 window.addEventListener('load' ,() => {
     function changeHistoryScreen(){

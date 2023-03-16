@@ -1,0 +1,118 @@
+{
+"1": {
+"texte": "Vous êtes un pilote de dirigeable renommé et vous êtes engagé pour livrer un chargement de matériel scientifique à une équipe de chercheurs qui travaille sur une station de recherche flottante. Alors que vous êtes en vol, un violent orage éclate et endommage votre dirigeable. Vous devez prendre une décision rapide pour éviter un crash imminent. Que faites-vous ?",
+"choix": [
+{
+"texte": "Tenter un atterrissage forcé sur l'île la plus proche.",
+"destination": 2
+},
+{
+"texte": "Essayer de réparer le dirigeable en vol.",
+"destination": 3
+},
+{
+"texte": "Tenter de traverser l'orage malgré les risques.",
+"destination": 4
+}
+]
+},
+"2": {
+"texte": "Vous réussissez à atterrir sur l'île en toute sécurité, mais vous vous rendez compte que vous êtes bloqué ici. Vous commencez à explorer l'île et découvrez un ancien temple abandonné. Allez-vous explorer le temple ou chercher un moyen de quitter l'île ?",
+"choix": [
+{
+"texte": "Explorer le temple.",
+"destination": 5
+},
+{
+"texte": "Chercher un moyen de quitter l'île.",
+"destination": 6
+}
+]
+},
+"3": {
+"texte": "Vous réussissez à réparer le dirigeable et continuez votre vol vers la station de recherche. Cependant, vous découvrez bientôt que le matériel scientifique est en réalité une arme dangereuse. Que faites-vous ?",
+"choix": [
+{
+"texte": "Livrer l'arme aux chercheurs sans poser de questions.",
+"destination": 7
+},
+{
+"texte": "Refuser de livrer l'arme et la jeter par-dessus bord.",
+"destination": 8
+}
+]
+},
+"4": {
+"texte": "Vous décidez de traverser l'orage, mais le dirigeable est frappé par la foudre et vous vous écrasez sur une île inconnue. Vous devez maintenant trouver un moyen de réparer le dirigeable pour pouvoir continuer votre mission. Allez-vous chercher de l'aide ou tenter de réparer le dirigeable vous-même ?",
+"choix": [
+{
+"texte": "Chercher de l'aide.",
+"destination": 9
+},
+{
+"texte": "Tenter de réparer le dirigeable vous-même.",
+"destination": 10
+}
+]
+},
+"5": {
+"texte": "Vous explorez le temple et découvrez un trésor incroyable. Cependant, vous vous rendez vite compte que vous n'êtes pas seul dans le temple. Des gardiens mystiques vous attaquent et vous devez vous battre pour survivre. Allez-vous continuer à chercher le trésor ou tenter de vous échapper du temple ?",
+"choix":[{
+"1": {
+"texte": "Vous êtes un pilote de dirigeable renommé et vous êtes engagé pour livrer un chargement de matériel scientifique à une équipe de chercheurs qui travaille sur une station de recherche flottante. Alors que vous êtes en vol, un violent orage éclate et endommage votre dirigeable. Vous devez prendre une décision rapide pour éviter un crash imminent. Que faites-vous ?",
+"choix": [
+{
+"texte": "Tenter un atterrissage forcé sur l'île la plus proche.",
+"destination": 2
+},
+{
+"texte": "Essayer de réparer le dirigeable en vol.",
+"destination": 3
+},
+{
+"texte": "Tenter de traverser l'orage malgré les risques.",
+"destination": 4
+}
+]
+},
+"2": {
+"texte": "Vous réussissez à atterrir sur l'île en toute sécurité, mais vous vous rendez compte que vous êtes bloqué ici. Vous commencez à explorer l'île et découvrez un ancien temple abandonné. Allez-vous explorer le temple ou chercher un moyen de quitter l'île ?",
+"choix": [
+{
+"texte": "Explorer le temple.",
+"destination": 5
+},
+{
+"texte": "Chercher un moyen de quitter l'île.",
+"destination": 6
+}
+]
+},
+"3": {
+"texte": "Vous réussissez à réparer le dirigeable et continuez votre vol vers la station de recherche. Cependant, vous découvrez bientôt que le matériel scientifique est en réalité une arme dangereuse. Que faites-vous ?",
+"choix": [
+{
+"texte": "Livrer l'arme aux chercheurs sans poser de questions.",
+"destination": 7
+},
+{
+"texte": "Refuser de livrer l'arme et la jeter par-dessus bord.",
+"destination": 8
+}
+]
+},
+"4": {
+"texte": "Vous décidez de traverser l'orage, mais le dirigeable est frappé par la foudre et vous vous écrasez sur une île inconnue. Vous devez maintenant trouver un moyen de réparer le dirigeable pour pouvoir continuer votre mission. Allez-vous chercher de l'aide ou tenter de réparer le dirigeable vous-même ?",
+"choix": [
+{
+"texte": "Chercher de l'aide.",
+"destination": 9
+},
+{
+"texte": "Tenter de réparer le dirigeable vous-même.",
+"destination": 10
+}
+]
+},
+"5": {
+"texte": "Vous explorez le temple et découvrez un trésor incroyable. Cependant, vous vous rendez vite compte que vous n'êtes pas seul dans le temple. Des gardiens mystiques vous attaquent et vous devez vous battre pour survivre. Allez-vous continuer à chercher le trésor ou tenter de vous échapper du temple ?",

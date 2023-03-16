@@ -46,6 +46,10 @@ main{
     width: 100%;
     height: 40%;
     background: #22272A;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 .sidebar .hero-container{
     width: 100%;
@@ -98,5 +102,32 @@ main{
 .life-container li{
     margin-left: 10px;
 }
-
-
+.player{
+    width: 80vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.player .thumbnail{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.player .content-container{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+.player .choices-container{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
