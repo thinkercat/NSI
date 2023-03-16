@@ -1,7 +1,7 @@
 import imageio as imageio
 import numpy
-PATH = './Python/Irem 2022-2023/'
-image = imageio.imread(PATH+'plan_lucioles.png')
+
+image = imageio.imread('https://iremsinfo.callicode.fr/ressources/chal/LuciolesEnchantees2/plan_lucioles.png')
 
 hauteur = image.shape[0]
 largeur = image.shape[1]
@@ -16,7 +16,7 @@ def voisines(h,l):
             if abs(h-y) <= 8 and abs(l-x) <= 8:
                 voisines.append([y,x])
 
-            return voisines
+    return voisines
 
 def pixelcolor(h,l):
     R,V,B = image[h,l]
@@ -36,13 +36,11 @@ def etat(h,l):
         return 3
     else:
         return 0
-t = 0
-px = 0
+
 for t in range(1000):
-    t += 1
     for h in range(hauteur):
         for l in range(largeur):
-            px += 1
+
             pos_voisines = []
             if image[h][l][0] != 0 or image[h][l][1] != 0 or image[h][l][2] != 0:
                 # print(f'\n color : {image[h][l]}')
@@ -76,8 +74,8 @@ for t in range(1000):
                         image[h][l] = [0,255,0]
             # else:
             #     # print(f"color : {image[h][l]}")
-            print(t,px)
+    print(t)
 
-            imageio.imsave(f'{PATH}lucioles.png', image)
+imageio.imsave(f'lucioles.png', image)
 
 print("End")
