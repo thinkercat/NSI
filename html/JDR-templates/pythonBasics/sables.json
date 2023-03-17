@@ -1,0 +1,87 @@
+{
+"1": {
+"texte": "Vous êtes un explorateur intergalactique à la recherche de nouvelles planètes habitables pour l'humanité. Vous arrivez sur une planète inconnue recouverte de sable à perte de vue et où le climat est brûlant. Vous avez peu de temps avant que vos réserves d'oxygène ne s'épuisent. Que faites-vous ?",
+"choix": [
+{
+"texte": "Explorer la planète à la recherche d'eau et de nourriture.",
+"destination": 2
+},
+{
+"texte": "Retourner à votre vaisseau pour trouver une autre planète à explorer.",
+"destination": 3
+}
+]
+},
+"2": {
+"texte": "Vous explorez la planète et finissez par trouver une oasis cachée au milieu du désert. Vous y trouvez de l'eau et des plantes comestibles. Cependant, vous réalisez rapidement que la planète est habitée par une espèce intelligente qui ne voit pas votre présence d'un bon œil. Que faites-vous ?",
+"choix": [
+{
+"texte": "Tenter d'établir un contact avec les autochtones.",
+"destination": 4
+},
+{
+"texte": "Repartir discrètement vers votre vaisseau.",
+"destination": 5
+}
+]
+},
+"3": {
+"texte": "Vous retournez à votre vaisseau et cherchez une autre planète à explorer. Cependant, vos réserves d'oxygène sont faibles et vous n'avez pas assez de carburant pour partir loin. Vous devez trouver une solution rapidement.",
+"choix": [
+{
+"texte": "Essayer de réparer votre vaisseau avec les moyens du bord.",
+"destination": 6
+},
+{
+"texte": "Explorer la planète à la recherche d'une source de carburant.",
+"destination": 7
+}
+]
+},
+"4": {
+"texte": "Vous essayez d'établir un contact avec les autochtones, mais ils sont méfiants et hostiles envers vous. Vous réalisez rapidement que votre présence sur leur planète est considérée comme une menace pour leur survie. Vous devez trouver un moyen de gagner leur confiance.",
+"choix": [
+{
+"texte": "Offrir de l'eau et de la nourriture en signe de paix.",
+"destination": 8
+},
+{
+"texte": "Utiliser la force pour les soumettre.",
+"destination": 9
+}
+]
+},
+"5": {
+"texte": "Vous essayez de partir discrètement vers votre vaisseau, mais les autochtones vous repèrent et vous pourchassent. Vous êtes rapidement encerclé et capturé. Vous êtes maintenant prisonnier sur cette planète inconnue.",
+"choix": []
+},
+"6": {
+"texte": "Vous essayez de réparer votre vaisseau avec les moyens du bord, mais vous n'avez pas les compétences nécessaires pour le faire. Vous réalisez rapidement que vous êtes condamné à rester sur cette planète jusqu'à ce que quelqu'un vienne vous sauver.",
+"choix": []
+},
+"7": {
+"texte": "Vous explorez la planète à la recherche d'une source de carburant et finissez par trouver une mine abandonnée. Vous y trouvez du carburant, mais vous réalisez rapidement que la mine est infestée de créatures dangereuses. Vous devez faire face à un choix difficile.",
+"choix": [
+{
+"texte": "Tenter de récupérer le carburant malgré les dangers.",
+"destination": 10
+},
+{
+"texte": "Repartir vers votre vaisseau sans le carburant et chercher une autre solution.",
+"destination": 3
+}
+]
+},
+"8": {
+"texte": "Vous offrez de l'eau et de la nourriture en signe de paix aux autochtones. Ils finissent par baisser leur garde et vous permettent de rester sur leur planète. Vous apprenez à communiquer avec eux et découvrez que leur civilisation est très avancée malgré leur environnement hostile. Vous décidez de rester sur cette planète pour en apprendre plus sur leur culture et partager vos connaissances avec eux.",
+"choix": []
+},
+"9": {
+"texte": "Vous utilisez la force pour soumettre les autochtones, mais cela ne fait qu'aggraver la situation. Ils se rebellent et vous êtes rapidement capturé. Vous êtes maintenant prisonnier sur cette planète inconnue.",
+"choix": []
+},
+"10": {
+"texte": "Vous tentez de récupérer le carburant malgré les dangers et vous y parvenez avec succès. Vous repartez vers votre vaisseau, maintenant capable de quitter cette planète inhospitalière. Vous vous sentez fier d'avoir surmonté les obstacles et d'avoir réussi votre mission d'exploration intergalactique.",
+"choix": []
+}
+}

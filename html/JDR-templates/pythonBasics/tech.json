@@ -1,0 +1,83 @@
+{
+    "1": {
+        "texte": "Max est un habitant de la ville futuriste de Néo-Tokyo, où la technologie est omniprésente et la vie est rythmée par les avancées scientifiques. Un jour, Max apprend qu'un complot se trame pour détruire la ville. Il est le seul à pouvoir arrêter les conspirateurs. Que fait Max ?",
+        "choix": [
+        {
+        "texte": "Chercher des alliés pour l'aider dans sa mission.",
+        "destination": 2
+        },
+        {
+        "texte": "Agir seul pour protéger la ville.",
+        "destination": 3
+        }
+        ]
+        },
+        "2": {
+        "texte": "Max cherche des alliés pour l'aider dans sa mission. Il rencontre une hackeuse, un ingénieur et un ancien policier qui ont tous des compétences utiles. Ensemble, ils découvrent que les conspirateurs sont une organisation secrète qui opère dans les souterrains de la ville. Que fait Max ?",
+        "choix": [
+        {
+        "texte": "Infiltrer les souterrains pour stopper les conspirateurs.",
+        "destination": 4
+        },
+        {
+        "texte": "Demander l'aide des autorités locales.",
+        "destination": 5
+        }
+        ]
+        },
+        "3": {
+        "texte": "Max agit seul pour protéger la ville. Il utilise ses compétences de hacker pour localiser les conspirateurs et s'introduit dans leur repaire. Cependant, il est rapidement repéré et doit affronter les conspirateurs seul. Que fait Max ?",
+        "choix": [
+        {
+        "texte": "Combattre les conspirateurs jusqu'à la victoire.",
+        "destination": 6
+        },
+        {
+        "texte": "Se rendre pour éviter d'autres victimes.",
+        "destination": 7
+        }
+        ]
+        },
+        "4": {
+        "texte": "Max et son équipe s'infiltrent dans les souterrains de la ville. Ils doivent affronter des pièges mortels et des gardes armés pour arriver au repaire des conspirateurs. Quand ils arrivent, ils découvrent que les conspirateurs ont mis en place une bombe qui va détruire la ville. Que fait Max ?",
+        "choix": [
+        {
+        "texte": "Désamorcer la bombe avant qu'elle n'explose.",
+        "destination": 8
+        },
+        {
+        "texte": "Evacuer la ville avant l'explosion.",
+        "destination": 9
+        }
+        ]
+        },
+        "5": {
+        "texte": "Max demande l'aide des autorités locales, mais il découvre qu'ils sont impliqués dans le complot. Il doit donc agir seul pour protéger la ville.",
+        "choix": [
+        {
+        "texte": "Utiliser ses compétences de hacker pour déjouer les plans des conspirateurs.",
+        "destination": 3
+        },
+        {
+        "texte": "S'infiltrer dans les souterrains pour arrêter les conspirateurs.",
+        "destination": 4
+        }
+        ]
+        },
+        "6": {
+        "texte": "Max combat les conspirateurs jusqu'à la victoire. Il sauve la ville de la destruction, mais il est gravement blessé dans le processus. Les autorités locales le remercient pour son héroïsme et il devient une légende urbaine.",
+        "choix": []
+        },
+        "7": {
+        "texte": "Max se rend pour éviter d'autres victimes, mais les conspirateurs l'emprisonnent. Heureusement, son équipe ne l'abandonne pas et parvient à le libérer. Ensemble, ils déjouent les plans des conspirateurs et sauvent la ville de la destruction. Max est acclamé comme un héros par les habitants reconnaissants.",
+        "choix": []
+        },
+        "8": {
+        "texte": "Max désamorce la bombe avec succès et sauve la ville de la destruction. Les autorités locales le remercient pour son héroïsme et il devient une légende urbaine.",
+        "choix": []
+        },
+        "9": {
+        "texte": "Max et son équipe évacuent la ville avant l'explosion de la bombe. Ils sauvent des milliers de vies, mais la ville est dévastée. Max est acclamé comme un héros par les habitants reconnaissants.",
+        "choix": []
+        }
+}

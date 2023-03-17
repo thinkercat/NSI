@@ -1,0 +1,215 @@
+{
+    "1": {
+        "texte": "Vous êtes un aventurier en quête d'exploration et vous êtes entré dans une ville abandonnée. Alors que vous explorez les rues désertes, vous entendez des bruits étranges venant d'un bâtiment proche. Que faites-vous ?",
+        "choix": [
+        {
+        "texte": "Investiguer sur le bruit.",
+        "destination": 2
+        },
+        {
+        "texte": "Continuer à explorer la ville.",
+        "destination": 3
+        }
+        ]
+    },
+    "2": {
+        "texte": "Vous suivez le bruit et découvrez une horde de zombies qui rôde dans le bâtiment. Vous devez maintenant trouver un moyen de les vaincre pour pouvoir continuer votre exploration. Allez-vous utiliser vos armes ou essayer de les éviter ?",
+        "choix": [
+        {
+        "texte": "Utiliser vos armes pour combattre les zombies.",
+        "destination": 4
+        },
+        {
+        "texte": "Essayer d'éviter les zombies pour continuer votre exploration.",
+        "destination": 5
+        }
+        ]
+    },
+    "3": {
+        "texte": "Vous continuez à explorer la ville mais vous ne trouvez rien d'intéressant. Cependant, vous entendez bientôt un bruit étrange venant d'une ruelle sombre. Allez-vous investiguer ou continuer votre exploration ?",
+        "choix": [
+        {
+        "texte": "Investiguer sur le bruit.",
+        "destination": 6
+        },
+        {
+        "texte": "Continuer à explorer la ville.",
+        "destination": 7
+        }
+        ]
+    },
+    "4": {
+        "texte": "Vous utilisez vos armes pour vaincre les zombies mais vous vous rendez compte que vous êtes à court de munitions. Vous devez maintenant trouver un autre moyen de les vaincre. Allez-vous chercher des munitions ou essayer de trouver une arme différente ?",
+        "choix": [
+        {
+        "texte": "Chercher des munitions.",
+        "destination": 8
+        },
+        {
+        "texte": "Trouver une arme différente.",
+        "destination": 9
+        }
+        ]
+    },
+    "5": {
+        "texte": "Vous évitez les zombies et continuez votre exploration, mais vous finissez par tomber sur un bâtiment verrouillé. Vous devez maintenant trouver un moyen d'entrer pour pouvoir continuer votre quête. Allez-vous chercher une clé ou essayer de forcer la serrure ?",
+        "choix": [
+        {
+        "texte": "Chercher une clé.",
+        "destination": 10
+        },
+        {
+        "texte": "Forcer la serrure.",
+        "destination": 11
+        }
+        ]
+    },
+    "6": {
+        "texte": "Vous investiguez sur le bruit et découvrez un groupe de survivants. Ils sont terrifiés et ont besoin d'aide pour fuir la ville. Allez-vous les aider ou continuer votre exploration ?",
+        "choix": [
+        {
+        "texte": "Aider les survivants à fuir la ville.",
+        "destination": 12
+        },
+        {
+        "texte": "Continuer votre exploration de la ville.",
+        "destination": 13
+        }
+        ]
+    },
+    "7": {
+        "texte": "Vous livrez l'arme aux chercheurs sans poser de questions, mais vous apprenez plus tard qu'ils ont l'intention de l'utiliser pour des expériences dangereuses. Allez-vous intervenir ou laisser les chercheurs faire ce qu'ils veulent ?",
+        "choix": [
+        {
+        "texte": "Intervenir pour empêcher les expériences dangereuses.",
+        "destination": 14
+        },
+        {
+        "texte": "Laisser les chercheurs faire ce qu'ils veulent.",
+        "destination": 15
+        }
+        ]
+    },
+    "8": {
+        "texte": "Vous refusez de livrer l'arme et la jetez par-dessus bord, mais vous êtes poursuivi par une organisation mystérieuse qui veut récupérer l'arme. Allez-vous les affronter ou tenter de leur échapper ?",
+        "choix": [
+        {
+        "texte": "Affronter l'organisation mystérieuse.",
+        "destination": 16
+        },
+        {
+        "texte": "Tenter de leur échapper.",
+        "destination": 17
+        }
+        ]
+    },
+    "9": {
+        "texte": "Vous cherchez de l'aide et découvrez une tribu indigène qui habite l'île. Ils acceptent de vous aider à réparer le dirigeable en échange de votre aide pour protéger leur village contre des pirates. Allez-vous accepter leur offre ou refuser et chercher de l'aide ailleurs ?",
+        "choix": [
+        {
+        "texte": "Accepter l'offre de la tribu indigène.",
+        "destination": 18
+        },
+        {
+        "texte": "Refuser leur offre et chercher de l'aide ailleurs.",
+        "destination": 19
+        }
+        ]
+    },
+    "10": {
+        "texte": "Vous tentez de réparer le dirigeable vous-même, mais vous n'avez pas les compétences nécessaires pour y parvenir. Allez-vous continuer d'essayer ou chercher de l'aide ?",
+        "choix": [
+        {
+        "texte": "Continuer d'essayer de réparer le dirigeable vous-même.",
+        "destination": 20
+        },
+        {
+        "texte": "Chercher de l'aide.",
+        "destination": 9
+        }
+        ]
+    },
+    "11": {
+        "texte": "Vous réussissez à réparer le dirigeable et livrez le matériel scientifique aux chercheurs. Vous êtes récompensé pour votre bravoure et renommé comme un pilote de dirigeable légendaire. Félicitations !",
+        "choix": []
+    },
+    "12": {
+        "texte": "Vous aidez les survivants à fuir la ville, mais vous êtes poursuivi par une horde de zombies. Vous devez combattre pour survivre et sauver les survivants. Vous réussissez à fuir la ville et les survivants vous remercient pour votre aide.",
+        "choix": []
+    },
+    "13": {
+        "texte": "Vous continuez votre exploration de la ville et découvrez un laboratoire secret. Vous explorez le laboratoire et découvrez des expériences horribles qui ont été menées sur les humains. Allez-vous détruire le laboratoire ou continuer votre exploration ?",
+        "choix": [
+        {
+        "texte": "Détruire le laboratoire.",
+        "destination": 21
+        },
+        {
+        "texte": "Continuer votre exploration.",
+        "destination": 22
+        }
+        ]
+    },
+    "14": {
+        "texte": "Vous intervenez pour empêcher les expériences dangereuses menées par les chercheurs et vous récupérez l'arme. Vous découvrez que l'arme est en réalité un prototype de machine à voyager dans le temps. Allez-vous l'utiliser pour retourner dans le passé et empêcher les expériences dangereuses ou la détruire pour éviter les conséquences d'une telle technologie ?",
+        "choix": [
+        {
+        "texte": "Utiliser la machine à voyager dans le temps pour empêcher les expériences dangereuses.",
+        "destination": 23
+        },
+        {
+        "texte": "Détruire la machine à voyager dans le temps.",
+        "destination": 24
+        }
+        ]
+    },
+    "15": {
+        "texte": "Vous laissez les chercheurs faire ce qu'ils veulent avec l'arme et vous repartez sans rien dire. Vous vous sentez coupable de ne pas avoir agi, mais vous ne voulez pas vous impliquer dans des affaires qui ne vous concernent pas. Vous quittez l'île et continuez votre vie ailleurs.",
+        "choix": []
+    },
+    "16": {
+        "texte": "Vous affrontez l'organisation mystérieuse qui veut récupérer l'arme et réussissez à les vaincre. Vous découvrez que l'arme est en réalité un prototype de machine à voyager dans le temps. Allez-vous l'utiliser pour retourner dans le passé et changer le cours de l'histoire ou la détruire pour éviter les conséquences d'une telle technologie ?",
+        "choix": [
+        {
+        "texte": "Utiliser la machine à voyager dans le temps pour changer le cours de l'histoire.",
+        "destination": 23
+        },
+        {
+        "texte": "Détruire la machine à voyager dans le temps.",
+        "destination": 24
+        }
+        ]
+    },
+    "17": {
+        "texte": "Vous tentez de leur échapper, mais ils sont trop nombreux. Vous êtes capturé et votre destin est scellé. Vous n'aurez pas la chance de savoir ce qu'ils voulaient réellement avec l'arme.",
+        "choix": []
+    },
+    "18": {
+        "texte": "Vous acceptez l'offre de la tribu indigène et les aidez à protéger leur village contre les pirates. En échange, ils vous aident à réparer le dirigeable. Vous repartez de l'île avec le matériel scientifique et la gratitude de la tribu indigène.",
+        "choix": []
+    },
+    "19": {
+    "texte": "Vous refusez l'offre de la tribu indigène et continuez votre recherche d'aide pour réparer le dirigeable. Après plusieurs jours de recherche, vous finissez par trouver un mécanicien qui accepte de vous aider en échange d'une somme d'argent importante. Vous repartez de l'île avec le matériel scientifique et un nouveau problème financier.",
+    "choix": []
+    },
+    "20": {
+        "texte": "Vous continuez d'essayer de réparer le dirigeable vous-même, mais vous êtes trop inexpérimenté pour y parvenir. Après plusieurs jours d'efforts, vous abandonnez et cherchez de l'aide. Vous trouvez un mécanicien qui accepte de vous aider en échange d'une somme d'argent importante. Vous repartez de l'île avec le matériel scientifique et un nouveau problème financier.",
+        "choix": []
+    },
+    "21": {
+        "texte": "Vous décidez de retourner à la civilisation et abandonnez votre mission. Vous quittez l'île et continuez votre vie ailleurs, sans jamais savoir ce qui est arrivé à l'arme et aux expériences dangereuses.",
+        "choix": []
+    },
+    "22": {
+        "texte": "Vous décidez de rester sur l'île et de trouver une solution pour empêcher les expériences dangereuses. Vous passez des jours à étudier les recherches des scientifiques et finissez par trouver un moyen de désactiver l'arme. Vous prévenez ensuite les autorités compétentes pour qu'elles prennent les mesures nécessaires. Vous quittez l'île avec un sentiment de satisfaction d'avoir accompli quelque chose de bien.",
+        "choix": []
+    },
+    "23": {
+        "texte": "Vous utilisez la machine à voyager dans le temps pour retourner dans le passé et empêcher les expériences dangereuses. Vous réussissez votre mission et retournez dans le présent pour constater que le monde est différent, mais meilleur. Vous réalisez que vous avez changé le cours de l'histoire et vous vous demandez quelles autres actions vous pourriez prendre avec une telle technologie.",
+        "choix": []
+    },
+    "24": {
+        "texte": "Vous détruisez la machine à voyager dans le temps pour éviter les conséquences d'une telle technologie. Vous êtes conscient que cette décision a peut-être empêché des changements positifs dans l'histoire, mais vous pensez que c'est la décision la plus sage. Vous repartez de l'île avec le sentiment d'avoir accompli quelque chose de bien.",
+        "choix": []
+    }
+}
