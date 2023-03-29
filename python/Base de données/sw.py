@@ -1,7 +1,7 @@
 import csv
 
-with open('pokedex.csv') as pokedex_data:
-    table = list(csv.DictReader(pokedex_data,delimiter=';'))
+with open('sw.csv') as f:
+    table = list(csv.DictReader(f,delimiter=','))
 
 def search(value, table:list)->bool:
     '''
@@ -14,4 +14,4 @@ def search(value, table:list)->bool:
 
     return False
 
-print(search('Mew', table))
+print(search('Dark Vador', table))
