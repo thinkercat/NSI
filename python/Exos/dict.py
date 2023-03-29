@@ -90,7 +90,8 @@ dates = {
     "Dennis": (9, 9, 1941),
     "Hedy": (9, 11, 1914),
     "Steve": (24, 2, 1955),
-    "Eliott":(14,6,2006)
+    "Eliott":(14,6,2006),
+    "Gaspard":(14,4,2006)
     }
 mois = [
         "janvier", "février", "mars", "avril",
@@ -111,34 +112,54 @@ print(calendrier())
 def plus_jeune(dates:dict=dates):
     plus_petit = (0,0,0)
     jp,mp,ap = plus_petit
-    n = ''
+
     for name,date in dates.items():
         j,m,a = date
         if a >= ap:
-            jp,mp,ap = j,m,a
-            n=name
-            if  m >= mp:
-                jp,mp,ap = j,m,a
-                n=name
-                if j >= jp:
-                    jp,mp,ap = j,m,a
-                    n=name
-    return n
+            ap = a
+
+    dates = {n:d for n,d in dates.items() if d[2] == ap}
+
+    for name,date in dates.items():
+        j,m,a = date
+        if m >= mp:
+            mp = m
+            
+    dates = {n:d for n,d in dates.items() if d[1] == mp}
+
+    for name,date in dates.items():
+        j,m,a = date
+        if j >= jp:
+            jp = j
+            
+    dates = {n:d for n,d in dates.items() if d[0] == jp}
+
+    return dates
 def plus_vieux(dates:dict=dates):
     plus_petit = (10000,10000,100000000000000000)
     jp,mp,ap = plus_petit
-    n = ''
+    
     for name,date in dates.items():
         j,m,a = date
-        if a <= ap:
-            jp,mp,ap = j,m,a
-            n=name
-            if  m <= mp:
-                jp,mp,ap = j,m,a
-                n=name
-                if j <= jp:
-                    jp,mp,ap = j,m,a
-                    n=name
+        if a >= ap:
+            ap = a
+
+    dates = {n:d for n,d in dates.items() if d[2] == ap}
+
+    for name,date in dates.items():
+        j,m,a = date
+        if m >= mp:
+            mp = m
+            
+    dates = {n:d for n,d in dates.items() if d[1] == mp}
+
+    for name,date in dates.items():
+        j,m,a = date
+        if j >= jp:
+            jp = j
+            
+    dates = {n:d for n,d in dates.items() if d[0] == jp}
+
     return n
 print(plus_jeune())
 print(plus_vieux())
