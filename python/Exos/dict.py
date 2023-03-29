@@ -78,6 +78,73 @@ def plus_grand(pokemons: dict) -> tuple:
 
 print(plus_grand(exemple_pokemons))
 
+
+
+dates = {
+    "Alan": (23, 6, 1912),
+    "Grace": (9, 12, 1906),
+    "Linus": (28, 12, 1969),
+    "Guido": (31, 1, 1956),
+    "Ada": (10, 12, 1815),
+    "Tim": (8, 6, 1955),
+    "Dennis": (9, 9, 1941),
+    "Hedy": (9, 11, 1914),
+    "Steve": (24, 2, 1955),
+    "Eliott":(14,6,2006)
+    }
+mois = [
+        "janvier", "février", "mars", "avril",
+        "mai", "juin", "juillet", "aout",
+        "septembre", "octobre", "novembre", "décembre",
+    ]
+
+def calendrier(dates:dict=dates):
+    calendrier = {}
+    for name, date in dates.items():
+        if mois[date[1]-1] in calendrier:
+            calendrier[mois[date[1]-1]].append(name)
+        else:
+            calendrier[mois[date[1]-1]] = [name]
+    return calendrier
+print(calendrier())
+
+def plus_jeune(dates:dict=dates):
+    plus_petit = (0,0,0)
+    jp,mp,ap = plus_petit
+    n = ''
+    for name,date in dates.items():
+        j,m,a = date
+        if a >= ap:
+            jp,mp,ap = j,m,a
+            n=name
+            if  m >= mp:
+                jp,mp,ap = j,m,a
+                n=name
+                if j >= jp:
+                    jp,mp,ap = j,m,a
+                    n=name
+    return n
+def plus_vieux(dates:dict=dates):
+    plus_petit = (10000,10000,100000000000000000)
+    jp,mp,ap = plus_petit
+    n = ''
+    for name,date in dates.items():
+        j,m,a = date
+        if a <= ap:
+            jp,mp,ap = j,m,a
+            n=name
+            if  m <= mp:
+                jp,mp,ap = j,m,a
+                n=name
+                if j <= jp:
+                    jp,mp,ap = j,m,a
+                    n=name
+    return n
+print(plus_jeune())
+print(plus_vieux())
+
+
+
 dico_gen = {
     'UUU': 'F', 'UUC': 'F', 'UUG': 'L', 'UUA': 'L', 'UCU': 'S',
     'UCC': 'S', 'UCG': 'S', 'UCA': 'S', 'UAU': 'Y', 'UAC': 'Y',
@@ -99,6 +166,8 @@ def traduction(texte:str,dico_gen=dico_gen):
 
 print(traduction('CAUAUA'))
 
+
+
 def jour_suivant(date:tuple):
     jours = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"]
 
@@ -110,10 +179,18 @@ def jour_suivant(date:tuple):
 
     duree_mois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    nom_jour = date[0]
-    indice_jour_suivant = (jours.index(nom_jour) + 1) % 7
-    numero_mois = date[2]
-    x = 2
-    numero_mois_suivant = (numero_mois + x) %12
-    return (jours[(jours.index(date[0])+1)%7], numero_mois_suivant)
-print(jour_suivant(("samedi", 21, 10, 1995)))
+    if date[1]+1 > duree_mois[date[2]-1]:
+        numero_mois_suivant = (date[2]+1)%12
+    else:
+        numero_mois_suivant = date[2]
+    numero_jour_suivant = (date[1] + 1) % duree_mois[date[2]-1]
+    
+    if date[2] + 1 > 12:
+        annee_suivante = date[3] + 1
+    else:
+        annee_suivante = date[3]
+
+    return (jours[(jours.index(date[0])+1)%7],numero_jour_suivant,numero_mois_suivant, annee_suivante)
+
+
+print(jour_suivant(("dimanche", 15, 9, 1995)))
