@@ -15,3 +15,8 @@ def search(value, table:list)->bool:
     return False
 
 print(search('Mew', table))
+
+e = [1,2]
+f = [11,22]
+for a,b in e,f:
+    print(f'{a}:{b}')
