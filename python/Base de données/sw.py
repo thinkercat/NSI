@@ -40,7 +40,7 @@ def projection(value:list, filter:list, table):
 
 def key(t):
     return (t['Espece'],t['Nom'])
-    
+
 table = sorted(table,key=key)
 
 for e in table:
