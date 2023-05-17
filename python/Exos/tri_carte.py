@@ -37,6 +37,25 @@ def tri_insertion(tab:list):
 assert  tri_insertion([2,3,1]) == [1,2,3]
 assert  tri_insertion([2,3,1,15,17,12]) == [1,2,3,12,15,17]
 
+def tri_parallele(tab:list):
+    """
+    Tri en parallele pour des listes à valeur double
+    """
+    i = 0
+    j = len(tab)-1
+    v_min = min(tab)
+    while i != j:
+        if tab[i] > v_min:
+            tab[i], tab[j] = tab[j], tab[i]
+            j -= 1
+        else:
+            i += 1
+    return tab
+
+assert tri_parallele([1,1,0,1,0,0]) == [0,0,0,1,1,1]
+assert tri_parallele([2,6,2,2,6,2,2,6,6,2,2]) == [2,2,2,2,2,2,2,6,6,6,6]
+
+
 def alea(n):
     lst_alea = list(range(n))
     rd.shuffle(lst_alea)
@@ -58,5 +77,5 @@ tailles = [10, 50, 100, 500, 1000, 2000, 5000, 10000]
 temps_ins = [chrono_ins(alea(k)) for k in tailles]
 temps_sel = [chrono_sel(alea(k)) for k in tailles]
 
-plt.plot(tailles, temps_ins,tailles, temps_sel)
-plt.show()
+# plt.plot(tailles, temps_ins,tailles, temps_sel)
+# plt.show()
