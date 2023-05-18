@@ -2,8 +2,8 @@
 import pyxel as pxl
 import random as rd
 
-WINDOW_WIDTH = 400
-WINDOW_HEIGHT = 300
+WINDOW_WIDTH = 140
+WINDOW_HEIGHT = 130
 
 class Props:
     def __init__(self) -> None:
