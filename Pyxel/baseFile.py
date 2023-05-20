@@ -7,22 +7,27 @@ WINDOW_HEIGHT = 130
 
 class Props:
     def __init__(self) -> None:
-        self.x = 0
-        self.y = 0
+        self.x = rd.randint(0,WINDOW_WIDTH-8)
+        self.y = rd.randint(0,WINDOW_HEIGHT-8)
     
     def resetPos(self):
         self.x = rd.randint(0,WINDOW_WIDTH-8)
         self.y = rd.randint(0,WINDOW_HEIGHT-8)
 
     def update(self):
-        if self.x < WINDOW_WIDTH-8:
+
+        self.x += rd.randint(-1,1)
+        self.y += rd.randint(-1,1)
+        
+        if self.x >= WINDOW_WIDTH-8:
+            self.x -= 1
+        elif self.x <= 0:
             self.x += 1
-        else:
-            self.x = 0
-        if self.y < WINDOW_HEIGHT-8:
+        if self.y >= WINDOW_HEIGHT-8:
+            self.y -= 1
+        elif self.y <= 0:
             self.y += 1
-        else:
-            self.y = 0
+
 
     def draw(self):
         pxl.blt(self.x,self.y,0,0,0,8,8)
@@ -31,7 +36,7 @@ class Player:
     def __init__(self) -> None:
         self.x = 0
         self.y = 0
-        self.velocity = 1
+        self.velocity = 2
 
     def movement(self):
         if pxl.btn(pxl.KEY_RIGHT) and self.x < WINDOW_WIDTH:
@@ -70,7 +75,6 @@ class Game:
     def isEat(self):
         if self.props01.x >= self.player.x and self.props01.x <= self.player.x+8 and self.props01.y >= self.player.y and self.props01.y <= self.player.y+8:
             self.score += 1
-            self.player.velocity += 1
             self.props01.resetPos()
 
     def update(self):
