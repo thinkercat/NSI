@@ -19,7 +19,7 @@ class Props:
         self.y += rd.randint(1,3)
 
     def draw(self):
-        pxl.blt(self.x,self.y,0,0,0,8,8)
+        pxl.blt(self.x,self.y,0,16,0,8,8,13)
 
 class Player:
     def __init__(self) -> None:
@@ -45,22 +45,28 @@ class Game:
         pxl.load("car.pyxres")
         
         self.player = Player()
-        
+        self.props = []
 
         self.score = 0
 
         pxl.run(self.update, self.draw)
 
-    
+    def propsGeneration(self):
+        for i in range(len(self.props)-1):
+            if self.props[i].y < WINDOW_HEIGHT:
+                self.props.remove(i)
+
+
     def update(self):
         self.player.update()
-
+        self.props.update()
 
 
     def draw(self):
         pxl.cls(0) # Efface le contenu déjà présent
         pxl.bltm(0,0,0,0,0,64,128)
         self.player.draw()
+        self.props.draw()
 
 
 Game()
