@@ -10,13 +10,17 @@ class Props:
     def __init__(self) -> None:
         self.x = 0
         self.y = 0
+        self.velocity = rd.randint(1,3
+                                   )
+        self.resetPos()
     
     def resetPos(self):
         self.x = rd.randint(0,WINDOW_WIDTH-8)
+        self.velocity = rd.randint(1,2)
         self.y = 0
 
     def update(self):
-        self.y += rd.randint(1,3)
+        self.y += self.velocity
 
     def draw(self):
         pxl.blt(self.x,self.y,0,16,0,8,8,13)
@@ -47,26 +51,34 @@ class Game:
         self.player = Player()
         self.props = []
 
+        self.nbProps = 5
+        for e in range(self.nbProps):
+            self.props.append(Props())
+
         self.score = 0
 
         pxl.run(self.update, self.draw)
 
     def propsGeneration(self):
-        for i in range(len(self.props)-1):
-            if self.props[i].y < WINDOW_HEIGHT:
-                self.props.remove(i)
+        for i in self.props:
+            if i.y > WINDOW_HEIGHT:
+                i.resetPos()
 
 
     def update(self):
+        print(self.props)
         self.player.update()
-        self.props.update()
+        for i in self.props:
+            i.update()
+        self.propsGeneration()
 
 
     def draw(self):
         pxl.cls(0) # Efface le contenu déjà présent
         pxl.bltm(0,0,0,0,0,64,128)
         self.player.draw()
-        self.props.draw()
+        for i in self.props:
+            i.draw()
 
 
 Game()
