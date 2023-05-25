@@ -1,5 +1,5 @@
 from random import randint
-
+import math as mt
 
 def sommes_entiers(valeur: int):
     s = 0
@@ -155,8 +155,45 @@ def test_decrypt():
     assert unlist(["H", "e", "l", "l", "o", "W", "o", "r", "l", "d"]) == "HelloWorld"
     print("Fonction unlist()....OK")
 
+def recherche(valeurs:list,v):
+    for i in range(len(valeurs)-1):
+        if valeurs[i] == v:
+            return i
 
-test_decrypt()
+def trouve_dicho(tab: list, valeur: int) :
+    '''
+    Renvoie l'indice de 'valeur' si 'valeur' est trouvée dans la liste 'tab', et None sinon.
 
-print(decrypt("abcde"))  # hello decalage 2
+    'tab' doit être une liste triée dans l'ordre croissant.
+    '''
+    indice_debut = 0
+    indice_fin = len(tab)-1
+    while indice_debut <= indice_fin :
+        indice_centre = (indice_debut + indice_fin) // 2     # on prend l'indice central
+        valeur_centrale = tab[indice_centre]             # on prend la valeur centrale 
+        if valeur_centrale == valeur :          # si la valeur centrale est la valeur cherchée...
+            return indice_centre
+        elif valeur_centrale < valeur:         # si la valeur centrale est trop petite...
+            indice_debut = indice_centre +1
+        else :
+            indice_fin = indice_centre -1
+    return None
+
+lst = [2, 3, 6, 7, 11, 14, 18, 19, 24]
+
+assert trouve_dicho(lst, 14) == 5
+assert trouve_dicho(lst, 3) == 1
+assert trouve_dicho(lst, 17) == None
+assert trouve_dicho(lst, 42) == None
+assert trouve_dicho(lst, 0) == None
+
+
+#print(recherche_liste_trié([1,2,3,4,5,6,7],2))
+#assert recherche([0,5,9,8,7],5) == 1
+#assert recherche_liste_trié([1,2,3,4,5,6,7],2) == 1
+
+
+#test_decrypt()
+
+#print(decrypt("abcde"))  # hello decalage 2
 # PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZZRAGYBATCBHEARCNFYRQRPELCGRENYNZNVA
