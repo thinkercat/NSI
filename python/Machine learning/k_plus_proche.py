@@ -1,4 +1,6 @@
 import csv
+import tkinter as tk
+from tkinter import ttk
 
 def main():
 
@@ -64,14 +66,39 @@ def main():
         return i_max(c)
 
             
-    def f_calc(flower_values:tuple,k)->int:
+    def f_calc(*args):
+        p_values = point.get().split(',')
+        flower_values = (float(p_values[0]),float(p_values[1]))
+        k = int(nb.get())
         p_proches = plus_proches(iris,flower_values,k)
-        f_type = flower_type(p_proches)
-        return f_type
+        result.set(flower_type(p_proches))
 
 
 
+    root = tk.Tk()
+    root.title("Analyse des fleurs")
 
-    print(f_calc((1,5),5))
+    mainframe = ttk.Frame(root,padding="3 3 12 12")
+    mainframe.grid(column=0,row=0,sticky=('N', 'W', 'E', 'S'))
+    root.columnconfigure(0,weight=1)
+    root.rowconfigure(0,weight=1)
+
+    point = tk.StringVar()
+    point_entry = ttk.Entry(mainframe,width=7,textvariable=point)
+    point_entry.grid(column=2,row=1,sticky=('W','E'))
+
+    nb = tk.StringVar()
+    nb_entry = ttk.Entry(mainframe,width=5,textvariable=nb)
+    nb_entry.grid(column=3,row=1,sticky=('W','E'))
+
+    btn = ttk.Button(mainframe,text="Get result",command=f_calc)
+    btn.grid(column=1,row=2,sticky='W')
+
+    result = tk.StringVar()
+    result_label = ttk.Label(mainframe,textvariable=result)
+    result_label.grid(column=2, row=2,sticky=('W','E'))
+    
+    point_entry.focus()
+    root.mainloop()
 if __name__ == '__main__':
     main()
