@@ -13,5 +13,5 @@ for attempt in range(len(dictionnaire)-1):
     rqt = requests.get(f'{url}?pass={password}')
 
     if rqt.text != invalid_password:
-        print(f'({rqt.status_code}) {attempt} : {password}')
+        print(f'{attempt} : {password} ({rqt.status_code}) ')
         break
